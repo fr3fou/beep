@@ -32,6 +32,20 @@ func main() {
 	}
 }
 
+func Flatten(input [][]float64) []float64 {
+	output := make([]float64, len(input)*len(input[0]))
+
+	i := 0
+	for _, row := range input {
+		for _, col := range row {
+			output[i] = col
+			i++
+		}
+	}
+
+	return output
+}
+
 func Multiply(c float64) Mapper {
 	return func(x float64) float64 {
 		return x * c
