@@ -16,7 +16,7 @@ var (
 func main() {
 	waves := MapVariadic(
 		Range(1, SampleRate),
-		Multiply(0.2),
+		Multiply(440*2*math.Pi/SampleRate),
 		math.Sin,
 		Multiply(Volume),
 	)
