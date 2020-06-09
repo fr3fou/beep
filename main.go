@@ -14,17 +14,12 @@ var (
 )
 
 func main() {
-	waves :=
-		Map(
-			Map(
-				Map(
-					Range(1, SampleRate),
-					Multiply(0.2),
-				),
-				math.Sin,
-			),
-			Multiply(Volume),
-		)
+	waves := MapVariadic(
+		Range(1, SampleRate),
+		Multiply(0.2),
+		math.Sin,
+		Multiply(Volume),
+	)
 
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
@@ -56,6 +51,20 @@ func RangeStep(low, high, step float64) []float64 {
 
 func Range(low, high float64) []float64 {
 	return RangeStep(low, high, 1)
+}
+
+func MapVariadic(arr []float64, mappers ...Mapper) []float64 {
+	output := make([]float64, len(arr))
+
+	for i, elem := range arr {
+		output[i] = elem
+	}
+
+	for _, mapper := range mappers {
+		output = Map(output, mapper)
+	}
+
+	return output
 }
 
 func Map(arr []float64, f Mapper) []float64 {
