@@ -1,0 +1,2 @@
+# megolovania
+Megalovania in Go
