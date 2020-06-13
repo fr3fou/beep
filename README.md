@@ -2,6 +2,8 @@
 
 Megalovania in Go
 
+Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000`
+
 ## Shoutouts
 
 [viktordanov](https://github.com/viktordanov)
