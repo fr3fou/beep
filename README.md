@@ -4,6 +4,13 @@ Megalovania in Go
 
 Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000`
 
+## TODO
+
+- [ ] Refactor to idiomatic go code
+- [ ] Rename to a proper name
+- [ ] Make examples
+- [ ] Implement a simple format - mp3 / wav / something simpler?
+
 ## Shoutouts
 
 [viktordanov](https://github.com/viktordanov)
