@@ -103,6 +103,48 @@ func Note(offset Offset, duration NoteDuration, volume float64) []float64 {
 	)
 }
 
+func Envelope(wave []float64, attack, decay, sustain float64) []float64 {
+	attackEnd := int(attack * float64(len(wave)))            // index of attackEnd
+	decayEnd := int(decay*float64(len(wave))) + attackEnd    // index of decayEnd
+	sustainEnd := int(sustain*float64(len(wave))) + decayEnd // index of sustainEnd
+
+	releaseLength := len(wave) - sustainEnd
+
+	i := 0.0
+
+	attackStep := 1.35 / float64(attackEnd)
+	attackPart := Map(wave[:attackEnd], func(x float64) float64 {
+		val := x * i
+		i += attackStep
+		return val
+	})
+
+	decayStep := 0.35 / float64(decayEnd-attackEnd)
+	decayPart := Map(wave[attackEnd:decayEnd], func(x float64) float64 {
+		val := x * i
+		i -= decayStep
+		return val
+	})
+
+	sustainPart := Map(wave[decayEnd:sustainEnd], func(x float64) float64 {
+		return x
+	})
+
+	releaseStep := 1.0 / float64(releaseLength)
+	releasePart := Map(wave[sustainEnd:], func(x float64) float64 {
+		val := x * i
+		i -= releaseStep
+		return val
+	})
+
+	return Flatten(
+		attackPart,
+		decayPart,
+		sustainPart,
+		releasePart,
+	)
+}
+
 func Flatten(input ...[]float64) []float64 {
 	output := []float64{}
 
