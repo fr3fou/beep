@@ -54,8 +54,8 @@ const (
 // A is the 1/12th root of 2
 var A = math.Pow(2, 1.0/12)
 
-func main() {
-	waves := Flatten(
+func AngryBirds() []float64 {
+	return Flatten(
 		Note(E4, Semiquaver, 0.05),
 		Note(FS4, Semiquaver, 0.05),
 		Note(G4, Quaver, 0.05),
@@ -76,6 +76,10 @@ func main() {
 		Note(FS4, Semiquaver, 0.05),
 		Note(E4, Crotchet, 0.05),
 	)
+}
+
+func main() {
+	waves := AngryBirds()
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
 		panic(err)
