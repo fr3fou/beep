@@ -19,4 +19,4 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000`
 - https://www.wikiwand.com/en/A440_(pitch_standard)
 - https://mathbitsnotebook.com/Algebra1/FunctionGraphs/FNGContinuousDiscrete.html
 - https://xiph.org/video/vid2.shtml
-- https://wiki.multimedia.cx/index.php/PCM#Integer_Or_Floating_Point
+- https://wiki.multimedia.cx/index.php/PCM
