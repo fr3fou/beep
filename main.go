@@ -118,6 +118,15 @@ func Megalovania() []Sample {
 		Note(D3, Semiquaver, 0.05),
 		Note(F3, Semiquaver, 0.05),
 		Note(G3, Semiquaver, 0.05),
+		Pause(Semiquaver),
+		Note(B4, Semiquaver, 0.05),
+		Note(C5, Semiquaver, 0.05),
+		Note(B4, Semiquaver, 0.05),
+		Note(A4, Semiquaver, 0.05),
+		Note(G4, Quaver, 0.05),
+		Note(G4, Semiquaver, 0.05),
+		Note(FS4, Semiquaver, 0.05),
+		Note(E4, Crotchet, 0.05),
 	)
 }
 
