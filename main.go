@@ -8,11 +8,18 @@ import (
 )
 
 type (
+	// NoteDuration is the type for the duration of a single note (SampleRate times samples)
 	NoteDuration = time.Duration
-	Offset       float64
-	Mapper       func(x float64) float64
+	// Sample represents wave data at a particular point in time
+	// 48000 Samples make up 1s of audio data at a sample rate of 48000
+	Sample = float64
+	// Offset is the offset of the notes with relation to A440 -> A4
+	Offset float64
+	// Mapper is a function type given to a mapping function which applies it to a slice of floats
+	Mapper func(x float64) float64
 )
 
+// Some predefined note offsets in the 4th and 5th octave with relation to A4
 const (
 	C4  Offset = -9
 	CS4 Offset = -8
@@ -26,7 +33,7 @@ const (
 	A4  Offset = 0
 	AS4 Offset = 1
 	B4  Offset = 2
-	//
+
 	C5 Offset = 3
 )
 
@@ -43,8 +50,10 @@ const (
 )
 
 const (
+	// SampleRate is the rate at which we sample the resultant binary musicfile
 	SampleRate = 48000.0
-	BPM        = 120.0
+	// BPM is the tempo of the notes we define to generate the file
+	BPM = 120.0
 	// BeatNoteLength is derived from the time signature (in our case 4/4)
 	// e.g. for the 7/8 time signature, our note length will be 8 (i.e. an eigth note)
 	// so since we're basing our definitions by a semibreve we multiple by the reverse -> 1 / notelength.
@@ -54,10 +63,13 @@ const (
 // A is the 1/12th root of 2
 var A = math.Pow(2, 1.0/12)
 
-func AngryBirds() []float64 {
+// AngryBirds is the first 3 measures of a simplified variation of the original Angry Birds theme
+func AngryBirds() []Sample {
 	return Flatten(
+		// First measure without pauses in the beginning
 		Note(E4, Semiquaver, 0.05),
 		Note(FS4, Semiquaver, 0.05),
+		// Second measure
 		Note(G4, Quaver, 0.05),
 		Note(E4, Quaver, 0.05),
 		Note(B4, Quaver, 0.05),
@@ -66,7 +78,7 @@ func AngryBirds() []float64 {
 		Note(G4, Quaver, 0.05),
 		Note(B4, Quaver, 0.05),
 		Note(B4, Crotchet, 0.05),
-		//
+		// Third measure without tailing pause and 2 notes
 		Note(B4, Semiquaver, 0.05),
 		Note(C5, Semiquaver, 0.05),
 		Note(B4, Semiquaver, 0.05),
@@ -91,11 +103,14 @@ func main() {
 	}
 }
 
-func Pause(duration NoteDuration) []float64 {
+// Pause generates a silent samples array of a given duration
+func Pause(duration NoteDuration) []Sample {
 	return Note(0, duration, 0)
 }
 
-func Note(offset Offset, duration NoteDuration, volume float64) []float64 {
+// Note generates an array of samples representing a sine wave oscilating at a specific note frequency
+// for a given duration of time at a given volume
+func Note(offset Offset, duration NoteDuration, volume float64) []Sample {
 	// https://pages.mtu.edu/~suits/NoteFreqCalcs.html
 	freq := 440 * math.Pow(A, float64(offset))
 
@@ -108,7 +123,8 @@ func Note(offset Offset, duration NoteDuration, volume float64) []float64 {
 		), 0.25, 0.15, 0.30)
 }
 
-func Envelope(wave []float64, attack, decay, sustain float64) []float64 {
+// Envelope applies ADSR (Attack Decay Sustain Release) on an array of samples
+func Envelope(wave []Sample, attack, decay, sustain float64) []Sample {
 	attackEnd := int(attack * float64(len(wave)))            // index of attackEnd
 	decayEnd := int(decay*float64(len(wave))) + attackEnd    // index of decayEnd
 	sustainEnd := int(sustain*float64(len(wave))) + decayEnd // index of sustainEnd
@@ -150,6 +166,8 @@ func Envelope(wave []float64, attack, decay, sustain float64) []float64 {
 	)
 }
 
+// Flatten merges a slice of slices of floats to a single "flat"
+// slice of floats
 func Flatten(input ...[]float64) []float64 {
 	output := []float64{}
 
@@ -160,12 +178,15 @@ func Flatten(input ...[]float64) []float64 {
 	return output
 }
 
+// Multiply returns a mapper function which multiplies by a given constant to then be used
+// in Map and MapVariatic
 func Multiply(c float64) Mapper {
 	return func(x float64) float64 {
 		return x * c
 	}
 }
 
+// RangeStep generates a float slice containing the range low - high with a given step
 func RangeStep(low, high, step float64) []float64 {
 	output := make([]float64, int(high-low+1))
 	index := 0
@@ -178,10 +199,12 @@ func RangeStep(low, high, step float64) []float64 {
 	return output
 }
 
+// Range generates a float slice containing the range low - high
 func Range(low, high float64) []float64 {
 	return RangeStep(low, high, 1)
 }
 
+// MapVariadic sequentially applies all Mapper functions on all elements of the float slice arr
 func MapVariadic(arr []float64, mappers ...Mapper) []float64 {
 	output := make([]float64, len(arr))
 
@@ -194,6 +217,7 @@ func MapVariadic(arr []float64, mappers ...Mapper) []float64 {
 	return output
 }
 
+// Map applies a mapper function on all elements of the float slice arr
 func Map(arr []float64, f Mapper) []float64 {
 	output := make([]float64, len(arr))
 
