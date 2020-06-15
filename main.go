@@ -8,7 +8,7 @@ import (
 
 type Mapper func(x float64) float64
 
-var (
+const (
 	SampleRate float64 = 48000
 	Volume     float64 = 0.05
 )
@@ -36,6 +36,7 @@ func Flatten(input [][]float64) []float64 {
 	output := make([]float64, len(input)*len(input[0]))
 
 	i := 0
+
 	for _, row := range input {
 		for _, col := range row {
 			output[i] = col
@@ -55,6 +56,7 @@ func Multiply(c float64) Mapper {
 func RangeStep(low, high, step float64) []float64 {
 	output := make([]float64, int(high-low+1))
 	index := 0
+
 	for i := low; i <= high; i += step {
 		output[index] = i
 		index++
@@ -70,9 +72,7 @@ func Range(low, high float64) []float64 {
 func MapVariadic(arr []float64, mappers ...Mapper) []float64 {
 	output := make([]float64, len(arr))
 
-	for i, elem := range arr {
-		output[i] = elem
-	}
+	copy(output, arr)
 
 	for _, mapper := range mappers {
 		output = Map(output, mapper)
