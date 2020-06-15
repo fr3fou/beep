@@ -233,7 +233,7 @@ func Note(offset Offset, duration NoteDuration, volume float64) []Sample {
 		MapVariadic(
 			Range(1, SampleRate*duration.Seconds()),
 			Multiply(freq*2*math.Pi/SampleRate),
-			SquareWave,
+			math.Sin,
 			Multiply(volume),
 		), 0.30, 0.10, 0.30)
 }
