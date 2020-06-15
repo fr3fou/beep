@@ -4,23 +4,26 @@ import (
 	"encoding/binary"
 	"math"
 	"os"
+	"time"
 )
 
 type Mapper func(x float64) float64
 
+type Offset float64
+
 const (
-	SampleRate float64 = 48000
-	Volume     float64 = 0.05
+	A4 Offset = 0
 )
 
-func main() {
-	waves := MapVariadic(
-		Range(1, SampleRate),
-		Multiply(440*2*math.Pi/SampleRate),
-		math.Sin,
-		Multiply(Volume),
-	)
+const (
+	SampleRate float64 = 48000
+)
 
+// A is the 1/12th root of 2
+var A = math.Pow(2, 1.0/12)
+
+func main() {
+	waves := Note(A4, time.Second, 0.05)
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
 		panic(err)
@@ -30,6 +33,18 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func Note(offset Offset, duration time.Duration, volume float64) []float64 {
+	// https://pages.mtu.edu/~suits/NoteFreqCalcs.html
+	freq := 440 * math.Pow(A, float64(offset))
+
+	return MapVariadic(
+		Range(1, SampleRate*duration.Seconds()),
+		Multiply(freq*2*math.Pi/SampleRate),
+		math.Sin,
+		Multiply(volume),
+	)
 }
 
 func Flatten(input [][]float64) []float64 {
