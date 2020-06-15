@@ -47,7 +47,21 @@ const (
 	AS4 Offset = 1
 	B4  Offset = 2
 
-	C5 Offset = 3
+	C5  Offset = 3
+	CS5 Offset = 4
+	D5  Offset = 5
+	DS5 Offset = 6
+	E5  Offset = 7
+	F5  Offset = 8
+	FS5 Offset = 9
+	G5  Offset = 10
+	GS5 Offset = 11
+	A5  Offset = 12
+	AS5 Offset = 13
+	B5  Offset = 14
+
+	C6  Offset = 15
+	CS6 Offset = 16
 )
 
 // We define the length of a beat by the time signature (4/4 in the case of Angry Birds and Megalovania)
@@ -66,7 +80,7 @@ const (
 	// SampleRate is the rate at which we sample the resultant binary musicfile
 	SampleRate = 48000.0
 	// BPM is the tempo of the notes we define to generate the file
-	BPM = 120.0
+	BPM = 90.0
 	// BeatNoteLength is derived from the time signature (in our case 4/4)
 	// e.g. for the 7/8 time signature, our note length will be 8 (i.e. an eigth note)
 	// so since we're basing our definitions by a semibreve we multiple by the reverse -> 1 / notelength.
@@ -77,52 +91,122 @@ const (
 var A = math.Pow(2, 1.0/12)
 
 // AngryBirds is the first 3 measures of a simplified variation of the original Angry Birds theme
-func AngryBirds() []Sample {
+func AngryBirds(volume float64) []Sample {
 	return Flatten(
 		// First measure without pauses in the beginning
-		Note(E4, Semiquaver, 0.05),
-		Note(FS4, Semiquaver, 0.05),
+		Note(E4, Semiquaver, volume),
+		Note(FS4, Semiquaver, volume),
 		// Second measure
-		Note(G4, Quaver, 0.05),
-		Note(E4, Quaver, 0.05),
-		Note(B4, Quaver, 0.05),
-		Note(E4, Semiquaver, 0.05),
-		Note(FS4, Semiquaver, 0.05),
-		Note(G4, Quaver, 0.05),
-		Note(B4, Quaver, 0.05),
-		Note(B4, Crotchet, 0.05),
+		Note(G4, Quaver, volume),
+		Note(E4, Quaver, volume),
+		Note(B4, Quaver, volume),
+		Note(E4, Semiquaver, volume),
+		Note(FS4, Semiquaver, volume),
+		Note(G4, Quaver, volume),
+		Note(B4, Quaver, volume),
+		Note(B4, Crotchet, volume),
 		// Third measure without tailing pause and 2 notes
-		Note(B4, Semiquaver, 0.05),
-		Note(C5, Semiquaver, 0.05),
-		Note(B4, Semiquaver, 0.05),
-		Note(A4, Semiquaver, 0.05),
-		Note(G4, Quaver, 0.05),
-		Note(G4, Semiquaver, 0.05),
-		Note(FS4, Semiquaver, 0.05),
-		Note(E4, Crotchet, 0.05),
+		Note(B4, Semiquaver, volume),
+		Note(C5, Semiquaver, volume),
+		Note(B4, Semiquaver, volume),
+		Note(A4, Semiquaver, volume),
+		Note(G4, Quaver, volume),
+		Note(G4, Semiquaver, volume),
+		Note(FS4, Semiquaver, volume),
+		Note(E4, Crotchet, volume),
 	)
 }
 
-func Megalovania() []Sample {
+// Megalovania -
+func Megalovania(volume float64) []Sample {
 	return Flatten(
-		Note(D3, Semiquaver, 0.05),
-		Note(D3, Semiquaver, 0.05),
-		Note(D4, Semiquaver, 0.05),
-		Note(A3, Quaver, 0.05),
+		Note(D3, Semiquaver, volume),
+		Note(D3, Semiquaver, volume),
+		Note(D4, Semiquaver, volume),
+		Note(A3, Quaver, volume),
 		Pause(Semiquaver),
-		Note(GS3, Semiquaver, 0.05),
+		Note(GS3, Semiquaver, volume),
 		Pause(Semiquaver),
-		Note(G3, Semiquaver, 0.05),
+		Note(G3, Semiquaver, volume),
 		Pause(Semiquaver),
-		Note(F3, Quaver, 0.05),
-		Note(D3, Semiquaver, 0.05),
-		Note(F3, Semiquaver, 0.05),
-		Note(G3, Semiquaver, 0.05),
+		Note(F3, Quaver, volume),
+		Note(D3, Semiquaver, volume),
+		Note(F3, Semiquaver, volume),
+		Note(G3, Semiquaver, volume),
+	)
+}
+
+// Memory C# F# G#
+func Memory(volume float64) []Sample {
+	return Flatten(
+		Note(D5, Quaver, volume),
+		Note(B5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Pause(Quaver),
+		Note(E5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Note(D5, Quaver, volume),
+		Note(B5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Pause(Quaver),
+		Note(E5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(CS6, Quaver, volume),
+		Note(B5, Quaver+Semiquaver, volume),
+		Note(A5, Semiquaver*3, volume),
+		Note(B5, Quaver, volume),
+		// repeat
+		Note(D5, Quaver, volume),
+		Note(B5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Pause(Quaver),
+		Note(E5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Note(D5, Quaver, volume),
+		Note(B5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(E5, Quaver, volume),
+		Note(GS5, Quaver+Semiquaver, volume),
+		Note(GS5, Semiquaver*3, volume),
+		Note(A5, Quaver, volume),
+		//
+		Pause(Quaver),
+		Note(E5, Quaver, volume),
+		Note(A5, Quaver, volume),
+		Note(CS6, Quaver, volume),
+		Note(B5, Quaver+Semiquaver, volume),
+		Note(A5, Semiquaver*3, volume),
+		Note(B5, Quaver, volume),
 	)
 }
 
 func main() {
-	waves := Megalovania()
+	waves := Memory(0.015)
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
 		panic(err)
@@ -149,7 +233,7 @@ func Note(offset Offset, duration NoteDuration, volume float64) []Sample {
 		MapVariadic(
 			Range(1, SampleRate*duration.Seconds()),
 			Multiply(freq*2*math.Pi/SampleRate),
-			math.Sin,
+			SquareWave,
 			Multiply(volume),
 		), 0.30, 0.10, 0.30)
 }
@@ -207,6 +291,29 @@ func Flatten(input ...[]float64) []float64 {
 	}
 
 	return output
+}
+
+// TriangleWave is a function which creates a triangle wave
+func TriangleWave(x float64) float64 {
+	return math.Abs(float64((int(x) % 2) - 1))
+}
+
+// ConvexTriangleWave is a function which creates a triangle wave
+func ConvexTriangleWave(x float64) float64 {
+	return math.Pow(TriangleWave(x), 2)
+}
+
+// ConcaveTriangleWave is a function which creates a triangle wave
+func ConcaveTriangleWave(x float64) float64 {
+	return math.Sqrt(TriangleWave(x))
+}
+
+// SquareWave is a function which creates a square wave
+func SquareWave(x float64) float64 {
+	if int(x)%2 < 1 {
+		return 1
+	}
+	return 0
 }
 
 // Multiply returns a mapper function which multiplies by a given constant to then be used
