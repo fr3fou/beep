@@ -11,6 +11,7 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
 - [ ] Make examples
 - [ ] Implement a simple format - mp3 / wav / something simpler?
 - [ ] Define all notes in all octaves a seperate file
+- [ ] GUI + keybinds
 
 ## Shoutouts
 
