@@ -30,8 +30,11 @@ const (
 	C5 Offset = 3
 )
 
+// We define the length of a beat by the time signature (4/4 in the case of Angry Birds and Megalovania)
+// We do that by determining which note length will be = 1 beat, e.g. 4/4 -> (4) means Crotchet so
+// 1 Crotchet = 1 Beat => 1 Semibreve = 4 beats
 const (
-	Semibreve      NoteDuration = time.Second * (1 / (60.0 / BPM))
+	Semibreve      NoteDuration = NoteDuration(time.Minute / BPM * BeatNoteLength)
 	Minim          NoteDuration = Semibreve / 2
 	Crotchet       NoteDuration = Semibreve / 4
 	Quaver         NoteDuration = Semibreve / 8
@@ -41,7 +44,11 @@ const (
 
 const (
 	SampleRate = 48000.0
-	BPM        = 120.0
+	BPM        = 60.0
+	// BeatNoteLength is derived from the time signature (in our case 4/4)
+	// e.g. for the 7/8 time signature, our note length will be 8 (i.e. an eigth note)
+	// so since we're basing our definitions by a semibreve we multiple by the reverse -> 1 / notelength.
+	BeatNoteLength = 4
 )
 
 // A is the 1/12th root of 2
