@@ -21,6 +21,19 @@ type (
 
 // Some predefined note offsets in the 4th and 5th octave with relation to A4
 const (
+	C3  Offset = -21
+	CS3 Offset = -20
+	D3  Offset = -19
+	DS3 Offset = -18
+	E3  Offset = -17
+	F3  Offset = -16
+	FS3 Offset = -15
+	G3  Offset = -14
+	GS3 Offset = -13
+	A3  Offset = -12
+	AS3 Offset = -11
+	B3  Offset = -10
+
 	C4  Offset = -9
 	CS4 Offset = -8
 	D4  Offset = -7
@@ -90,8 +103,26 @@ func AngryBirds() []Sample {
 	)
 }
 
+func Megalovania() []Sample {
+	return Flatten(
+		Note(D3, Semiquaver, 0.05),
+		Note(D3, Semiquaver, 0.05),
+		Note(D4, Semiquaver, 0.05),
+		Note(A3, Quaver, 0.05),
+		Pause(Semiquaver),
+		Note(GS3, Semiquaver, 0.05),
+		Pause(Semiquaver),
+		Note(G3, Semiquaver, 0.05),
+		Pause(Semiquaver),
+		Note(F3, Quaver, 0.05),
+		Note(D3, Semiquaver, 0.05),
+		Note(F3, Semiquaver, 0.05),
+		Note(G3, Semiquaver, 0.05),
+	)
+}
+
 func main() {
-	waves := AngryBirds()
+	waves := Megalovania()
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
 		panic(err)
@@ -120,7 +151,7 @@ func Note(offset Offset, duration NoteDuration, volume float64) []Sample {
 			Multiply(freq*2*math.Pi/SampleRate),
 			math.Sin,
 			Multiply(volume),
-		), 0.25, 0.15, 0.30)
+		), 0.30, 0.10, 0.30)
 }
 
 // Envelope applies ADSR (Attack Decay Sustain Release) on an array of samples
