@@ -44,7 +44,7 @@ const (
 
 const (
 	SampleRate = 48000.0
-	BPM        = 60.0
+	BPM        = 120.0
 	// BeatNoteLength is derived from the time signature (in our case 4/4)
 	// e.g. for the 7/8 time signature, our note length will be 8 (i.e. an eigth note)
 	// so since we're basing our definitions by a semibreve we multiple by the reverse -> 1 / notelength.
@@ -95,12 +95,13 @@ func Note(offset Offset, duration NoteDuration, volume float64) []float64 {
 	// https://pages.mtu.edu/~suits/NoteFreqCalcs.html
 	freq := 440 * math.Pow(A, float64(offset))
 
-	return MapVariadic(
-		Range(1, SampleRate*duration.Seconds()),
-		Multiply(freq*2*math.Pi/SampleRate),
-		math.Sin,
-		Multiply(volume),
-	)
+	return Envelope(
+		MapVariadic(
+			Range(1, SampleRate*duration.Seconds()),
+			Multiply(freq*2*math.Pi/SampleRate),
+			math.Sin,
+			Multiply(volume),
+		), 0.25, 0.15, 0.30)
 }
 
 func Envelope(wave []float64, attack, decay, sustain float64) []float64 {
