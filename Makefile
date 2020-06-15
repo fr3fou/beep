@@ -1,6 +1,5 @@
 BINARY_NAME=megolovania
 
-
 .PHONY: build run play
 
 all: build run play
