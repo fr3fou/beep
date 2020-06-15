@@ -2,7 +2,7 @@
 
 Megalovania in Go
 
-Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000`
+Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by running `make` or just `make play` if the file already exists
 
 ## TODO
 
