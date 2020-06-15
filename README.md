@@ -29,3 +29,4 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
 - https://mathbitsnotebook.com/Algebra1/FunctionGraphs/FNGContinuousDiscrete.html
 - https://xiph.org/video/vid2.shtml
 - https://wiki.multimedia.cx/index.php/PCM
+- https://stackoverflow.com/questions/1073606/is-there-a-one-line-function-that-generates-a-triangle-wave
