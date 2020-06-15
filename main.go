@@ -7,23 +7,68 @@ import (
 	"time"
 )
 
-type Mapper func(x float64) float64
-
-type Offset float64
-
-const (
-	A4 Offset = 0
+type (
+	NoteDuration = time.Duration
+	Offset       float64
+	Mapper       func(x float64) float64
 )
 
 const (
-	SampleRate float64 = 48000
+	C4  Offset = -9
+	CS4 Offset = -8
+	D4  Offset = -7
+	DS4 Offset = -6
+	E4  Offset = -5
+	F4  Offset = -4
+	FS4 Offset = -3
+	G4  Offset = -2
+	GS4 Offset = -1
+	A4  Offset = 0
+	AS4 Offset = 1
+	B4  Offset = 2
+	//
+	C5 Offset = 3
+)
+
+const (
+	Semibreve      NoteDuration = time.Second * (1 / (60.0 / BPM))
+	Minim          NoteDuration = Semibreve / 2
+	Crotchet       NoteDuration = Semibreve / 4
+	Quaver         NoteDuration = Semibreve / 8
+	Semiquaver     NoteDuration = Semibreve / 16
+	Demisemiquaver NoteDuration = Semibreve / 32
+)
+
+const (
+	SampleRate = 48000.0
+	BPM        = 120.0
 )
 
 // A is the 1/12th root of 2
 var A = math.Pow(2, 1.0/12)
 
 func main() {
-	waves := Note(A4, time.Second, 0.05)
+	waves := Flatten(
+		Note(E4, Semiquaver, 0.05),
+		Note(FS4, Semiquaver, 0.05),
+		Note(G4, Quaver, 0.05),
+		Note(E4, Quaver, 0.05),
+		Note(B4, Quaver, 0.05),
+		Note(E4, Semiquaver, 0.05),
+		Note(FS4, Semiquaver, 0.05),
+		Note(G4, Quaver, 0.05),
+		Note(B4, Quaver, 0.05),
+		Note(B4, Crotchet, 0.05),
+		//
+		Note(B4, Semiquaver, 0.05),
+		Note(C5, Semiquaver, 0.05),
+		Note(B4, Semiquaver, 0.05),
+		Note(A4, Semiquaver, 0.05),
+		Note(G4, Quaver, 0.05),
+		Note(G4, Semiquaver, 0.05),
+		Note(FS4, Semiquaver, 0.05),
+		Note(E4, Crotchet, 0.05),
+	)
 	file, err := os.Create("megolovania.bin")
 	if err != nil {
 		panic(err)
@@ -35,7 +80,11 @@ func main() {
 	}
 }
 
-func Note(offset Offset, duration time.Duration, volume float64) []float64 {
+func Pause(duration NoteDuration) []float64 {
+	return Note(0, duration, 0)
+}
+
+func Note(offset Offset, duration NoteDuration, volume float64) []float64 {
 	// https://pages.mtu.edu/~suits/NoteFreqCalcs.html
 	freq := 440 * math.Pow(A, float64(offset))
 
@@ -47,16 +96,11 @@ func Note(offset Offset, duration time.Duration, volume float64) []float64 {
 	)
 }
 
-func Flatten(input [][]float64) []float64 {
-	output := make([]float64, len(input)*len(input[0]))
-
-	i := 0
+func Flatten(input ...[]float64) []float64 {
+	output := []float64{}
 
 	for _, row := range input {
-		for _, col := range row {
-			output[i] = col
-			i++
-		}
+		output = append(output, row...)
 	}
 
 	return output
