@@ -33,9 +33,19 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
     ```
 - [ ] Rename to a proper name
 - [ ] Make examples
-- [ ] Implement a simple format - mp3 / wav / something simpler?
-- [ ] Define all notes in all octaves a seperate file
+- [ ] Implement a simple format ~~- mp3 /~~ wav
+- [x] Define all notes in all octaves a seperate file
 - [ ] GUI + keybinds
+- [ ] Play multiple notes at once
+    - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
+- [ ] Support for merging melodies / have melodies with differing BPM
+    ```go
+    m := mego.NewMelody(...)
+    m.AddNotes(...)
+    n := mego.NewMelody(...)
+    n.AddNotes(...)
+    o := m.Merge(n) // combines both melodies and makes a longer one
+    ```
 
 ## Shoutouts
 
