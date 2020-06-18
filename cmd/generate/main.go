@@ -8,13 +8,11 @@ func main() {
 	noteLength := 4 // 4/4, therefore 4
 
 	m := mego.NewMelody(
-		mego.MelodyConfig{
-			SampleRate: sampleRate,
-			BPM:        bpm,
-			NoteLength: noteLength,
-			Generator:  math.Sin,
-			Envelope:   mego.NewEnvelope(0.30, 0.10, 0.30, 0.30),
-		},
+		sampleRate,
+		bpm,
+		noteLength,
+		math.Sin,
+		mego.NewADSR(0.30, 0.10, 0.30, 0.30),
 		// variadic optional notes to begin with
 	)
 

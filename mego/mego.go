@@ -18,8 +18,16 @@ type Melody struct {
 	Envelope   *Envelope
 }
 
-// Envelope is an ADSR configuration
-type Envelope struct {
+// Envelope is an envelope
+type Envelope interface {
+	Attack([]Note) []Note
+	Decay([]Note) []Note
+	Sustain([]Note) []Note
+	Release([]Note) []Note
+}
+
+// ADSR is an Envelope implementation
+type ADSR struct {
 	Attack  float64
 	Decay   float64
 	Sustain float64
