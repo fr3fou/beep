@@ -26,6 +26,7 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
 - https://www.geogebra.org/graphing
 - https://golang.org/pkg/encoding/binary
 - https://www.wikiwand.com/en/A440_(pitch_standard)
+- https://www.wikiwand.com/en/Envelope_(music)
 - https://mathbitsnotebook.com/Algebra1/FunctionGraphs/FNGContinuousDiscrete.html
 - https://xiph.org/video/vid2.shtml
 - https://wiki.multimedia.cx/index.php/PCM
