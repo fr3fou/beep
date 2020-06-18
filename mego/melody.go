@@ -16,6 +16,12 @@ func NewMelody(sampleRate int, bpm int, noteLength int, generator Generator, env
 	}
 }
 
-// func (m *Melody) AddNote(){
+// AddNote adds a note
+func (m *Melody) AddNote(note Note) {
+	m.Note = append(m.Note, note)
+}
 
-// }
+// AddNotes adds notes
+func (m *Melody) AddNotes(notes ...Note) {
+	m.Note = append(m.Note, notes...)
+}
