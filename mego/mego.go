@@ -38,4 +38,5 @@ type ADSR struct {
 type Note struct {
 	Frequency int
 	Duruation NoteDuration
+	Volume    float64
 }
