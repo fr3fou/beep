@@ -7,6 +7,30 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
 ## TODO
 
 - [ ] Refactor to idiomatic go code
+- [ ] "Context" for making notes of the same  octave / noteduration / volume
+    ```go
+    m.AddNotes(
+        // "Encloses" the octave, so you only have to provide the duration and volume
+        mego.OctaveScope(4, func (ctx *mego.OctaveContext) []mego.Note {
+            return []Note{
+                ctx.A(mego.Quaver, 0.05),
+                ctx.B(mego.Quaver, 0.05),
+                ctx.D(mego.Quaver, 0.05),
+                ctx.FS(mego.Quaver, 0.05),
+                ctx.A(mego.Quaver, 0.05),
+                // Encloses the volume
+                ctx.VolumeScope(0.05, func (ctx *mego.VolumeContext) []mego.Note {
+                    return []Note{
+                        ctx.A(mego.Quaver),
+                        ctx.B(mego.Quaver),
+                        ctx.DS(mego.Quaver),
+                        ctx.FS(mego.Quaver),
+                    }
+                })
+            }
+        })
+    )
+    ```
 - [ ] Rename to a proper name
 - [ ] Make examples
 - [ ] Implement a simple format - mp3 / wav / something simpler?
