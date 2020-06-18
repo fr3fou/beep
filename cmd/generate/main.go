@@ -22,19 +22,12 @@ func main() {
 	)
 
 	m.AddNotes(
-		mego.NewNote(mego.D3, mego.Semiquaver, volume),
-		mego.NewNote(mego.D3, mego.Semiquaver, volume),
-		mego.NewNote(mego.D4, mego.Semiquaver, volume),
-		mego.NewNote(mego.A3, mego.Quuaver, volume),
-		mego.Pause(mego.Semiquaver),
-		mego.NewNote(mego.GS3, mego.Semiquaver, volume),
-		mego.Pause(mego.Semiquaver),
-		mego.NewNote(mego.G3, mego.Semiquaver, volume),
-		mego.Pause(mego.Semiquaver),
-		mego.NewNote(mego.F3, mego.Quaver, volume),
-		mego.NewNote(mego.D3, mego.Semiquaver, volume),
-		mego.NewNote(mego.F3, mego.Semiquaver, volume),
-		mego.NewNote(mego.G3, mego.Semiquaver, volume),
+		mego.A(4, mego.Quaver, volume),
+		mego.B(4, mego.Quaver, volume),
+		mego.DS(4, mego.Quaver, volume),
+		mego.FS(4, mego.Quaver, volume),
+		mego.E(5, mego.Quaver, volume),
+		mego.A(4, mego.Quaver, volume),
 	)
 
 	pcm := m.PCM()       // returns the PCM array
