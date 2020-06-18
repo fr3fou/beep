@@ -1,11 +1,16 @@
 package main
 
-import "math"
+import (
+	"math"
+
+	"github.com/fr3fou/mego/mego"
+)
 
 func main() {
 	sampleRate := 48000
-	bpm := 120.0
+	bpm := 120
 	noteLength := 4 // 4/4, therefore 4
+	volume := 0.05
 
 	m := mego.NewMelody(
 		sampleRate,
@@ -16,12 +21,20 @@ func main() {
 		// variadic optional notes to begin with
 	)
 
-	m.AddNote(
-	// add one note
-	)
-
 	m.AddNotes(
-	// add variadic notes
+		mego.NewNote(mego.D3, mego.Semiquaver, volume),
+		mego.NewNote(mego.D3, mego.Semiquaver, volume),
+		mego.NewNote(mego.D4, mego.Semiquaver, volume),
+		mego.NewNote(mego.A3, mego.Quuaver, volume),
+		mego.Pause(mego.Semiquaver),
+		mego.NewNote(mego.GS3, mego.Semiquaver, volume),
+		mego.Pause(mego.Semiquaver),
+		mego.NewNote(mego.G3, mego.Semiquaver, volume),
+		mego.Pause(mego.Semiquaver),
+		mego.NewNote(mego.F3, mego.Quaver, volume),
+		mego.NewNote(mego.D3, mego.Semiquaver, volume),
+		mego.NewNote(mego.F3, mego.Semiquaver, volume),
+		mego.NewNote(mego.G3, mego.Semiquaver, volume),
 	)
 
 	pcm := m.PCM()       // returns the PCM array

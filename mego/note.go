@@ -12,3 +12,8 @@ func NewNote(step Step, duration NoteDuration, volume float64) Note {
 		Volume:    volume,
 	}
 }
+
+// Pause is a handy wrapper around NewNote with duration 0 and volume 0
+func Pause(duration NoteDuration) Note {
+	return NewNote(0, duration, 0)
+}
