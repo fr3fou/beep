@@ -29,7 +29,7 @@ go music.
         })
     )
     ```
-- [ ] Rename to a proper name
+- [x] Rename to a proper name (?)
 - [ ] Make examples
 - [ ] Implement a simple format ~~- mp3 /~~ wav
 - [x] Define all notes in all octaves a seperate file
