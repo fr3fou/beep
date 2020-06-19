@@ -2,8 +2,6 @@ package main
 
 import (
 	"math"
-
-	"github.com/fr3fou/mego/mego"
 )
 
 func main() {
@@ -30,8 +28,8 @@ func main() {
 		mego.A(4, mego.Quaver, volume),
 	)
 
-	pcm := m.PCM()       // returns the PCM array
-	err := m.Write(file) // write PCM to an io.Writer
+	// pcm := m.PCM()       // returns the PCM array
+	// err := m.Write(file) // write PCM to an io.Writer
 
-	err := wav.Write(m, file) // write wav to an io.writer
+	// err := wav.Write(m, file) // write wav to an io.writer
 }
