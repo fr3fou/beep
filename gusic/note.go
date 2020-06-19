@@ -6,7 +6,7 @@ import "math"
 func NewNote(step int, duration NoteDuration, volume float64) Note {
 	return Note{
 		Frequency: 440 * math.Pow(twelfthrootof2, float64(step)),
-		Duruation: duration,
+		Duration:  duration,
 		Volume:    volume,
 	}
 }
