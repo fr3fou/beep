@@ -1,4 +1,4 @@
-package mego
+package gusic
 
 // 12th root of 2
 const twelfthrootof2 float64 = 1.059463094359

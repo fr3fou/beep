@@ -1,8 +1,6 @@
-# megolovania
+# gusic
 
-Megalovania in Go
-
-Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by running `make` or just `make play` if the file already exists.
+go music.
 
 ## TODO
 
@@ -46,6 +44,12 @@ Run with `ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000` or by
     n.AddNotes(...)
     o := m.Merge(n) // combines both melodies and makes a longer one
     ```
+
+## How to play music
+
+```console
+$ ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
+```
 
 ## Shoutouts
 

@@ -1,4 +1,4 @@
-package mego
+package gusic
 
 // NewMelody is a constructor for a melody
 func NewMelody(sampleRate int, bpm int, noteLength int, generator Generator, envelope Envelope, notes ...Note) *Melody {

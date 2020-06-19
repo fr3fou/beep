@@ -1,4 +1,4 @@
-package mego
+package gusic
 
 import "math"
 

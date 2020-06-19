@@ -1,3 +1,3 @@
-module github.com/fr3fou/mego
+module github.com/fr3fou/gusic
 
 go 1.14
