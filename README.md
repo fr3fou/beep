@@ -72,3 +72,6 @@ ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
 - <https://xiph.org/video/vid2.shtml>
 - <https://wiki.multimedia.cx/index.php/PCM>
 - <https://stackoverflow.com/questions/1073606/is-there-a-one-line-function-that-generates-a-triangle-wave>
+- <https://www.desmos.com/calculator/nduy9l2pez>
+- <https://dsp.stackexchange.com/questions/2555/help-with-equations-for-exponential-adsr-envelope>
+- <http://web.mit.edu/6.111/www/f2004/projects/ghs_report.pdf>
