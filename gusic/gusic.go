@@ -15,23 +15,16 @@ type Melody struct {
 	NoteLength int
 	BPM        int
 	Generator  *Generator
-	Envelope   *Envelope
-}
-
-// Envelope is an envelope
-type Envelope interface {
-	Attack([]Note) []Note
-	Decay([]Note) []Note
-	Sustain([]Note) []Note
-	Release([]Note) []Note
+	Envelope   *ADSR
 }
 
 // ADSR is an Envelope implementation
 type ADSR struct {
-	attack  float64
-	decay   float64
-	susain  float64
-	release float64
+	attack      float64
+	decay       float64
+	susain      float64
+	release     float64
+	currentStep float64
 }
 
 // Note is a note
