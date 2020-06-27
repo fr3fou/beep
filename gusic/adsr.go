@@ -2,7 +2,7 @@ package gusic
 
 func NewADSR(a, d, s, r float64) *ADSR {
 	return &ADSR{
-		a, d, s, r, 0,
+		a, d, s, r, 0.0,
 	}
 }
 
@@ -13,17 +13,19 @@ func (a *ADSR) Attack(notes []Note) []Note {
 	length := len(notes)
 	index := int(a.attack * float64(length))
 
-	multiplier := 0.0
+	multiplier := a.currentStep
 	for i := range notes[:index] {
 		output[i].Volume *= multiplier
-		multiplier += float64(i+1) * a.attack * 2 // add 1 to offset by 1
+		// We add + 1 to compensate for the fact that arrays start at 0
+		multiplier += float64(i+1) * a.attack * 1.25
 	}
+	a.currentStep = multiplier
 
 	return output
 }
 
 func (a *ADSR) Decay(notes []Note) []Note {
-	panic("not implemented") // TODO: Implement
+	// ok
 }
 
 func (a *ADSR) Sustain(notes []Note) []Note {
