@@ -28,10 +28,10 @@ type Envelope interface {
 
 // ADSR is an Envelope implementation
 type ADSR struct {
-	Attack  float64
-	Decay   float64
-	Sustain float64
-	Release float64
+	attack  float64
+	decay   float64
+	susain  float64
+	release float64
 }
 
 // Note is a note
