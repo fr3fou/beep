@@ -15,9 +15,7 @@ func (a *ADSR) Attack(notes []Note) []Note {
 
 	multiplier := a.currentStep
 	for i := range notes[:index] {
-		output[i].Volume *= multiplier
-		// We add + 1 to compensate for the fact that arrays start at 0
-		multiplier += float64(i+1) * a.attack * 1.25
+
 	}
 	a.currentStep = multiplier
 
@@ -25,7 +23,7 @@ func (a *ADSR) Attack(notes []Note) []Note {
 }
 
 func (a *ADSR) Decay(notes []Note) []Note {
-	// ok
+	//
 }
 
 func (a *ADSR) Sustain(notes []Note) []Note {
@@ -34,4 +32,15 @@ func (a *ADSR) Sustain(notes []Note) []Note {
 
 func (a *ADSR) Release(notes []Note) []Note {
 	panic("not implemented") // TODO: Implement
+}
+
+func (a *ADSR) Apply(notes []Note) []Note {
+	var v []Note = notes
+
+	v = a.Attack(v)
+	v = a.Decay(v)
+	v = a.Sustain(v)
+	v = a.Release(v)
+
+	return v
 }
