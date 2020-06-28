@@ -2,44 +2,54 @@ package gusic
 
 func NewADSR(attack, attackMultiplier, decay, decayMultiplier, sustain, release, releaseMultiplier float64) *ADSR {
 	return &ADSR{
-		attack:            attack,
+		attackRatio:       attack,
 		attackMultiplier:  attackMultiplier,
-		decay:             decay,
+		decayRatio:        decay,
 		decayMultiplier:   decayMultiplier,
-		sustain:           sustain,
-		release:           release,
+		sustainRatio:      sustain,
+		releaseRatio:      release,
 		releaseMultiplier: releaseMultiplier,
 	}
 }
 
-func (a *ADSR) Attack() {
-	length := len(a.notes)
+func (a *ADSR) attack(notes []Note) {
+	multiplier := a.attackMultiplier / float64(len(notes))
 
-	end := int(a.attack * float64(length))
-
-	multiplier := a.attackMultiplier / float64(end)
-	for i := range a.notes[:end] {
-		a.notes[i].Volume *= multiplier * float64(i)
+	for i := range notes {
+		notes[i].Volume *= multiplier * float64(i)
 	}
 }
 
-func (a *ADSR) Decay() {
-	panic("not implemented") // TODO: Implement
+func (a *ADSR) decay(notes []Note) {
+	multiplier := a.decayMultiplier / float64(len(notes))
+
+	for i := range notes {
+		notes[i].Volume *= multiplier * float64(i)
+	}
 }
 
-func (a *ADSR) Sustain() {
-	panic("not implemented") // TODO: Implement
+func (a *ADSR) sustain(notes []Note) {
+	for i, x := range notes {
+		notes[i].Volume = x.Volume
+	}
 }
 
-func (a *ADSR) Release() {
-	panic("not implemented") // TODO: Implement
+func (a *ADSR) release(notes []Note) {
+	multiplier := a.releaseMultiplier / float64(len(notes))
+
+	for i := range notes {
+		notes[i].Volume *= multiplier * float64(i)
+	}
 }
+func (a *ADSR) apply(notes []Note) {
+	length := len(notes)
 
-func (a *ADSR) Apply(notes []Note) {
-	a.notes = notes
+	attackEnd := int(a.attackRatio * float64(length))
+	decayEnd := int(a.decayRatio*float64(length)) + attackEnd
+	sustainEnd := int(a.sustainRatio*float64(length)) + decayEnd
 
-	a.Attack()
-	a.Decay()
-	a.Sustain()
-	a.Release()
+	a.attack(notes[:attackEnd])
+	a.decay(notes[attackEnd:decayEnd])
+	a.sustain(notes[decayEnd:sustainEnd])
+	a.release(notes[sustainEnd:])
 }
