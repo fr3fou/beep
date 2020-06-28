@@ -1,29 +1,35 @@
 package gusic
 
-func NewADSR(a, d, s, r float64) *ADSR {
+func NewADSR(attack, attackMultiplier, decay, decayMultiplier, sustain, release, releaseMultiplier float64) *ADSR {
 	return &ADSR{
-		a, d, s, r, 0.0,
+		attack:            attack,
+		attackMultiplier:  attackMultiplier,
+		decay:             decay,
+		decayMultiplier:   decayMultiplier,
+		sustain:           sustain,
+		release:           release,
+		releaseMultiplier: releaseMultiplier,
 	}
 }
 
 func (a *ADSR) Attack(notes []Note) []Note {
-	output := make([]Note, len(notes))
+	length := len(notes)
+
+	output := make([]Note, length)
 	copy(output, notes)
 
-	length := len(notes)
-	index := int(a.attack * float64(length))
+	end := int(a.attack * float64(length))
 
-	multiplier := a.currentStep
-	for i := range notes[:index] {
-
+	multiplier := a.attackMultiplier / float64(end)
+	for i := range notes[:end] {
+		output[i].Volume *= multiplier * float64(i)
 	}
-	a.currentStep = multiplier
 
 	return output
 }
 
 func (a *ADSR) Decay(notes []Note) []Note {
-	//
+	panic("not implemented") // TODO: Implement
 }
 
 func (a *ADSR) Sustain(notes []Note) []Note {

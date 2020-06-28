@@ -20,11 +20,16 @@ type Melody struct {
 
 // ADSR is an Envelope implementation
 type ADSR struct {
-	attack      float64
-	decay       float64
-	susain      float64
-	release     float64
-	currentStep float64
+	attack           float64
+	attackMultiplier float64
+
+	decay           float64
+	decayMultiplier float64
+
+	sustain float64
+
+	release           float64
+	releaseMultiplier float64
 }
 
 // Note is a note
