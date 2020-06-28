@@ -39,14 +39,21 @@ go music.
 - [ ] GUI + keybinds
 - [ ] Play multiple notes at once
   - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
-- [ ] Support for merging melodies / have melodies with differing BPM
-
+- [ ] Support for merging melodies (playing 2 melodies at the same time)
   ```go
   m := mego.NewMelody(...)
   m.AddNotes(...)
   n := mego.NewMelody(...)
   n.AddNotes(...)
   o := m.Merge(n) // combines both melodies and makes a longer one
+  ```
+- [ ] Support for concatenating melodies / have melodies with differing BPM
+  ```go
+  m := mego.NewMelody(...)
+  m.AddNotes(...)
+  n := mego.NewMelody(...)
+  n.AddNotes(...)
+  o := m.Concat(n) // combines both melodies and makes a longer one
   ```
 
 ## How to play music
