@@ -41,7 +41,7 @@ type ADSR interface {
 	Decay(notes []Note)
 	Sustain(notes []Note)
 	Release(notes []Note)
-	GetRatios() *ADSRRatios
+	GetRatios() ADSRRatios
 }
 
 // Note is a note

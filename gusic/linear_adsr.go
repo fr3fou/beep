@@ -47,3 +47,8 @@ func (a *LinearADSR) Release(notes []Note) {
 		a.currentMultiplier -= step
 	}
 }
+
+// GetRatios returns the ratios
+func (a *LinearADSR) GetRatios() ADSRRatios {
+	return a.ratios
+}

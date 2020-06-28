@@ -29,6 +29,6 @@ func TestLinearADSR(t *testing.T) {
 
 func printVolume(notes []Note) {
 	for i, note := range notes {
-		fmt.Printf("%d,%f\n", i, note)
+		fmt.Printf("%d,%f\n", i, note.Volume)
 	}
 }
