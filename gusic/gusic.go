@@ -20,6 +20,8 @@ type Melody struct {
 
 // ADSR is an Envelope implementation
 type ADSR struct {
+	notes []Note
+
 	attack           float64
 	attackMultiplier float64
 
