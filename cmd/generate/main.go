@@ -17,7 +17,7 @@ func main() {
 		bpm,
 		noteLength,
 		math.Sin,
-		gusic.NewADSR(0.25, 1.35, 0.25, 0.35, 0.25, 0.25, 1.0),
+		gusic.NewLinearADSR(gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
 		// variadic optional notes to begin with
 	)
 
