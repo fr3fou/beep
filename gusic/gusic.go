@@ -30,6 +30,8 @@ type ADSR struct {
 
 	releaseRatio      float64
 	releaseMultiplier float64
+
+	currentMultiplier float64
 }
 
 // Note is a note

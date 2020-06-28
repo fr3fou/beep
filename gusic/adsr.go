@@ -1,5 +1,6 @@
 package gusic
 
+// NewADSR is a constructor for an ADSR
 func NewADSR(attack, attackMultiplier, decay, decayMultiplier, sustain, release, releaseMultiplier float64) *ADSR {
 	return &ADSR{
 		attackRatio:       attack,
@@ -9,22 +10,25 @@ func NewADSR(attack, attackMultiplier, decay, decayMultiplier, sustain, release,
 		sustainRatio:      sustain,
 		releaseRatio:      release,
 		releaseMultiplier: releaseMultiplier,
+		currentMultiplier: 0.0,
 	}
 }
 
 func (a *ADSR) attack(notes []Note) {
-	multiplier := a.attackMultiplier / float64(len(notes))
+	step := a.attackMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= multiplier * float64(i)
+		notes[i].Volume *= a.currentMultiplier
+		a.currentMultiplier += step
 	}
 }
 
 func (a *ADSR) decay(notes []Note) {
-	multiplier := a.decayMultiplier / float64(len(notes))
+	step := a.decayMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= multiplier * float64(i)
+		notes[i].Volume *= a.currentMultiplier
+		a.currentMultiplier -= step
 	}
 }
 
@@ -35,13 +39,15 @@ func (a *ADSR) sustain(notes []Note) {
 }
 
 func (a *ADSR) release(notes []Note) {
-	multiplier := a.releaseMultiplier / float64(len(notes))
+	step := a.releaseMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= multiplier * float64(i)
+		notes[i].Volume *= a.currentMultiplier
+		a.currentMultiplier -= step
 	}
 }
-func (a *ADSR) apply(notes []Note) {
+
+func (a *ADSR) Apply(notes []Note) {
 	length := len(notes)
 
 	attackEnd := int(a.attackRatio * float64(length))
