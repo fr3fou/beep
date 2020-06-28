@@ -55,6 +55,7 @@ go music.
   n.AddNotes(...)
   o := m.Concat(n) // combines both melodies and makes a longer one
   ```
+- [ ] Dual Channel support (left and right ear)
 
 ## How to play music
 
