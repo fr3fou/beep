@@ -50,3 +50,19 @@ type Note struct {
 	Duration  NoteDuration
 	Volume    float64
 }
+
+// ApplyADSR applies all the stages of an ADSR to an array of notes
+func ApplyADSR(adsr ADSR, notes []Note) {
+	length := len(notes)
+
+	ratios := adsr.GetRatios()
+
+	attackEnd := int(ratios.AttackRatio * float64(length))
+	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
+	sustainEnd := int(ratios.SustainRatio*float64(length)) + decayEnd
+
+	adsr.Attack(notes[:attackEnd])
+	adsr.Decay(notes[attackEnd:decayEnd])
+	adsr.Sustain(notes[decayEnd:sustainEnd])
+	adsr.Release(notes[sustainEnd:])
+}

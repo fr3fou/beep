@@ -18,16 +18,12 @@ func main() {
 		noteLength,
 		math.Sin,
 		gusic.NewLinearADSR(gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
-		// variadic optional notes to begin with
 	)
 
 	m.AddNotes(
-		gusic.A(4, mego.Quaver, volume),
-		gusic.B(4, mego.Quaver, volume),
-		gusic.DS(4, mego.Quaver, volume),
-		gusic.FS(4, mego.Quaver, volume),
-		gusic.E(5, mego.Quaver, volume),
-		gusic.A(4, mego.Quaver, volume),
+		gusic.A(4, m.Quaver, volume),
+		gusic.B(4, m.Quaver, volume),
+		gusic.DS(4, m.Quaver, volume),
 	)
 
 	// pcm := m.PCM()       // returns the PCM array
