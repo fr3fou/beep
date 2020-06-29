@@ -1,6 +1,11 @@
 package gusic
 
-import "math"
+import (
+	"bytes"
+	"encoding/binary"
+	"io"
+	"math"
+)
 
 // NewMelody is a constructor for a melody
 func NewMelody(sampleRate float64, bpm int, noteLength int, generator Generator, adsr ADSR) *Melody {
@@ -61,6 +66,18 @@ func (m *Melody) compute() []float64 {
 	return melody
 }
 
-// func (m *Melody) PCM() []byte {
+func (m *Melody) PCM() ([]byte, error) {
+	buf := &bytes.Buffer{}
 
-// }
+	for _, sample := range m.compute() {
+		if err := binary.Write(buf, binary.LittleEndian, sample); err != nil {
+			return nil, err
+		}
+	}
+
+	return buf.Bytes(), nil
+}
+
+func (m *Melody) Write(w io.Writer) error {
+	return binary.Write(w, binary.LittleEndian, m.compute())
+}
