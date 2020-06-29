@@ -56,7 +56,7 @@ func (m *Melody) compute() []float64 {
 		samples := []float64{}
 
 		for j := 1.0; j < m.SampleRate*note.Duration.Seconds(); j++ {
-			val := math.Sin(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
+			val := m.Generator(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
 			samples = append(samples, val)
 		}
 
