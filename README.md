@@ -56,6 +56,9 @@ go music.
   o := m.Concat(n) // combines both melodies and makes a longer one
   ```
 - [ ] Dual Channel support (left and right ear)
+- [ ] Fix clipping in release of linear ADSR
+- [ ] Implement logarithmic / exp ADSR
+
 
 ## How to play music
 
