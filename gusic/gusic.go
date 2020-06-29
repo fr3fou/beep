@@ -11,7 +11,7 @@ type NoteDuration = time.Duration
 // Melody is a melody
 type Melody struct {
 	Notes      []Note
-	SampleRate int
+	SampleRate float64
 	NoteLength int
 	BPM        int
 	Generator  Generator
@@ -60,7 +60,7 @@ type Note struct {
 }
 
 // ApplyADSR applies all the stages of an ADSR to an array of notes
-func ApplyADSR(adsr ADSR, notes []Note) {
+func applyADSR(adsr ADSR, notes []Note) {
 	length := len(notes)
 
 	ratios := adsr.GetRatios()
