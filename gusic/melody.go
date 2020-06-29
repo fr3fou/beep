@@ -69,10 +69,8 @@ func (m *Melody) compute() []float64 {
 func (m *Melody) PCM() ([]byte, error) {
 	buf := &bytes.Buffer{}
 
-	for _, sample := range m.compute() {
-		if err := binary.Write(buf, binary.LittleEndian, sample); err != nil {
-			return nil, err
-		}
+	if err := binary.Write(buf, binary.LittleEndian, m.compute()); err != nil {
+		return nil, err
 	}
 
 	return buf.Bytes(), nil
