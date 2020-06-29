@@ -77,7 +77,7 @@ const (
 )
 
 const (
-	// SampleRate is the rate at which we sample the resultant binary musicfile
+	// SampleRate is the rate at which we sample the resultant binary musicfileSkj
 	SampleRate = 48000.0
 	// BPM is the tempo of the notes we define to generate the file
 	BPM = 90.0

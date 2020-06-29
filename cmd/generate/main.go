@@ -21,9 +21,9 @@ func main() {
 	)
 
 	m.AddNotes(
-		gusic.A(4, m.Quaver, volume),
-		gusic.B(4, m.Quaver, volume),
-		gusic.DS(4, m.Quaver, volume),
+		gusic.A(4, m.Quaver(), volume),
+		gusic.B(4, m.Quaver(), volume),
+		gusic.DS(4, m.Quaver(), volume),
 	)
 
 	// pcm := m.PCM()       // returns the PCM array

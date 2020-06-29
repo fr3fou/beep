@@ -2,7 +2,7 @@ package gusic
 
 // NewMelody is a constructor for a melody
 func NewMelody(sampleRate int, bpm int, noteLength int, generator Generator, adsr ADSR) *Melody {
-	return &Melody{
+	m := &Melody{
 		SampleRate: sampleRate,
 		BPM:        bpm,
 		NoteLength: noteLength,
@@ -10,6 +10,19 @@ func NewMelody(sampleRate int, bpm int, noteLength int, generator Generator, ads
 		Generator:  generator,
 		Notes:      []Note{},
 	}
+
+	m.calculateDurations()
+
+	return m
+}
+
+func (m *Melody) calculateDurations() {
+	// m.breve =
+	// m.semibreve =
+	// m.crotchet =
+	// m.quaver =
+	// m.semiquaver =
+	// m.demisemiquaver =
 }
 
 // AddNote adds a note

@@ -16,6 +16,14 @@ type Melody struct {
 	BPM        int
 	Generator  Generator
 	Envelope   ADSR
+
+	breve          NoteDuration
+	semibreve      NoteDuration
+	minim          NoteDuration
+	crotchet       NoteDuration
+	quaver         NoteDuration
+	semiquaver     NoteDuration
+	demisemiquaver NoteDuration
 }
 
 // LinearADSR is an Envelope implementation
