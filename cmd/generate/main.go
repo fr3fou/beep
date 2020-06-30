@@ -13,14 +13,17 @@ func Memory() gusic.Melody {
 	sampleRate := 48000.0
 	bpm := 90
 	noteLength := 4 // 4/4, therefore 4
-	volume := 0.05
+	volume := 0.5
 
 	m := gusic.NewMelody(
 		sampleRate,
 		bpm,
 		noteLength,
 		math.Sin,
-		gusic.NewLinearADSR(gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
+		gusic.NewEasedADSR(func(x float64) float64 {
+			x--
+			return x*x*x + 1
+		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
 	)
 
 	m.AddNotes(
@@ -32,7 +35,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.E(5, m.Quaver(), volume),
@@ -48,7 +51,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.CS(6, m.Quaver(), volume),
@@ -64,7 +67,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.E(5, m.Quaver(), volume),
@@ -80,7 +83,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.CS(6, m.Quaver(), volume),
@@ -103,6 +106,7 @@ func main() {
 	defer file.Close()
 
 	m := Memory()
+
 	m.Write(file)
 
 	// pcm := m.PCM()       // returns the PCM array

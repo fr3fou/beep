@@ -1,8 +1,8 @@
 BINARY_NAME=megolovania
 MUSIC_FILE=memory.gsc
+MUSIC_FILE_WAV=memory.wav
 
-
-.PHONY: build run play
+.PHONY: build run play wav
 
 all: build run play
 
@@ -16,3 +16,6 @@ run:
 
 play:
 	ffplay $(MUSIC_FILE) -autoexit -showmode 1 -f f64le -ar 48000
+
+wav:
+	ffmpeg -f f64le -ar 48000 -i $(MUSIC_FILE) $(MUSIC_FILE_WAV)    
