@@ -8,7 +8,6 @@ func NewEasedADSR(easer Easer, ratios ADSRRatios, attackMultiplier, decayMultipl
 		attackMultiplier:  attackMultiplier,
 		decayMultiplier:   decayMultiplier,
 		releaseMultiplier: releaseMultiplier,
-		currentMultiplier: 0.0,
 	}
 }
 
