@@ -4,7 +4,7 @@ go music.
 
 ## TODO
 
-- [ ] Refactor to idiomatic go code
+- [x] Refactor to idiomatic go code
 - [ ] "Context" for making notes of the same octave / noteduration / volume
 
   ```go
@@ -32,9 +32,9 @@ go music.
   ```
 
 - [x] Rename to a proper name (?)
-- [ ] Make examples
-- [ ] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
-- [ ] Implement a simple format ~~- mp3 /~~ wav
+- [x] Make examples
+- [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
+- [ ] Implement a simple format - ~~ mp3 ~~ / wav
 - [x] Define all notes in all octaves a seperate file
 - [ ] GUI + keybinds
 - [ ] Play multiple notes at once
@@ -56,7 +56,7 @@ go music.
   o := m.Concat(n) // combines both melodies and makes a longer one
   ```
 - [ ] Dual Channel support (left and right ear)
-- [ ] Fix clipping in release of linear ADSR
+- [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
 - [ ] Implement logarithmic / exp ADSR
 
 
