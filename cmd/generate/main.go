@@ -11,7 +11,7 @@ import (
 // Memory C# F# G#
 func Memory() gusic.Melody {
 	sampleRate := 48000.0
-	bpm := 120
+	bpm := 90
 	noteLength := 4 // 4/4, therefore 4
 	volume := 0.05
 
