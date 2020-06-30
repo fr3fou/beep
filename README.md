@@ -62,3 +62,4 @@ ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
 - <https://dsp.stackexchange.com/questions/2555/help-with-equations-for-exponential-adsr-envelope>
 - <http://web.mit.edu/6.111/www/f2004/projects/ghs_report.pdf>
 - <http://www.martin-finke.de/blog/articles/audio-plugins-011-envelopes/>
+- <https://www.geogebra.org/graphing/ehmusxyd>
