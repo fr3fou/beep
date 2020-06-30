@@ -11,7 +11,7 @@ func NewNote(step int, duration NoteDuration, volume float64) Note {
 	}
 }
 
-// Pause is a handy wrapper around NewNote with duration 0 and volume 0
+// Pause is a handy wrapper around NewNote with the given duration and volume and frequency 0
 func Pause(duration NoteDuration) Note {
 	return NewNote(0, duration, 0)
 }
