@@ -12,38 +12,38 @@ func NewLinearADSR(ratios ADSRRatios, attackMultiplier, decayMultiplier, release
 }
 
 // Attack is the attack stage
-func (a *LinearADSR) Attack(notes []Note) {
+func (a *LinearADSR) Attack(notes []float64) {
 	step := a.attackMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= a.currentMultiplier
+		notes[i] *= a.currentMultiplier
 		a.currentMultiplier += step
 	}
 }
 
 // Decay is the decay stage
-func (a *LinearADSR) Decay(notes []Note) {
+func (a *LinearADSR) Decay(notes []float64) {
 	step := a.decayMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= a.currentMultiplier
+		notes[i] *= a.currentMultiplier
 		a.currentMultiplier -= step
 	}
 }
 
 // Sustain is the sustain stage
-func (a *LinearADSR) Sustain(notes []Note) {
+func (a *LinearADSR) Sustain(notes []float64) {
 	for i, x := range notes {
-		notes[i].Volume = x.Volume
+		notes[i] = x
 	}
 }
 
 // Release is the release stage
-func (a *LinearADSR) Release(notes []Note) {
+func (a *LinearADSR) Release(notes []float64) {
 	step := a.releaseMultiplier / float64(len(notes))
 
 	for i := range notes {
-		notes[i].Volume *= a.currentMultiplier
+		notes[i] *= a.currentMultiplier
 		a.currentMultiplier -= step
 	}
 }

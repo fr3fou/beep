@@ -45,14 +45,23 @@ func (m *Melody) AddNotes(notes ...Note) {
 }
 
 // ApplyADSR applies all the stages of an ADSR to an array of notes
-func (m *Melody) applyADSR() {
-	applyADSR(m.Envelope, m.Notes)
+func (m *Melody) applyADSR(noteSamples []float64) {
+	length := len(noteSamples)
+
+	ratios := m.Envelope.GetRatios()
+
+	attackEnd := int(ratios.AttackRatio * float64(length))
+	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
+	sustainEnd := int(ratios.SustainRatio*float64(length)) + decayEnd
+
+	m.Envelope.Attack(noteSamples[:attackEnd])
+	m.Envelope.Decay(noteSamples[attackEnd:decayEnd])
+	m.Envelope.Sustain(noteSamples[decayEnd:sustainEnd])
+	m.Envelope.Release(noteSamples[sustainEnd:])
 }
 
 func (m *Melody) compute() []float64 {
 	melody := []float64{}
-
-	m.applyADSR()
 
 	for _, note := range m.Notes {
 		samples := []float64{}
@@ -62,6 +71,7 @@ func (m *Melody) compute() []float64 {
 			samples = append(samples, val)
 		}
 
+		m.applyADSR(samples)
 		melody = append(melody, samples...)
 	}
 

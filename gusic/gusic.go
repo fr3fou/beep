@@ -45,10 +45,10 @@ type ADSRRatios struct {
 
 // ADSR defines what an Envelope should behave like
 type ADSR interface {
-	Attack(notes []Note)
-	Decay(notes []Note)
-	Sustain(notes []Note)
-	Release(notes []Note)
+	Attack(notes []float64)
+	Decay(notes []float64)
+	Sustain(notes []float64)
+	Release(notes []float64)
 	GetRatios() ADSRRatios
 }
 
@@ -57,20 +57,4 @@ type Note struct {
 	Frequency float64
 	Duration  NoteDuration
 	Volume    float64
-}
-
-// ApplyADSR applies all the stages of an ADSR to an array of notes
-func applyADSR(adsr ADSR, notes []Note) {
-	length := len(notes)
-
-	ratios := adsr.GetRatios()
-
-	attackEnd := int(ratios.AttackRatio * float64(length))
-	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
-	sustainEnd := int(ratios.SustainRatio*float64(length)) + decayEnd
-
-	adsr.Attack(notes[:attackEnd])
-	adsr.Decay(notes[attackEnd:decayEnd])
-	adsr.Sustain(notes[decayEnd:sustainEnd])
-	adsr.Release(notes[sustainEnd:])
 }
