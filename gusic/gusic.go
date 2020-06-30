@@ -5,7 +5,7 @@ import "time"
 // Generator is a function for producing samples
 type Generator = func(x float64) float64
 
-// Easer is an easing function meant to be used in conjuction with an EasedADSR
+// Easer is an easing function meant to be used in conjunction with an EasedADSR
 type Easer = func(t float64) float64
 
 // NoteDuration is the duration of a single note

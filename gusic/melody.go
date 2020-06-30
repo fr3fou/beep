@@ -25,7 +25,7 @@ func NewMelody(sampleRate float64, bpm int, noteLength int, generator Generator,
 }
 
 func (m *Melody) calculateDurations() {
-	m.breve = NoteDuration(time.Minute / NoteDuration(m.BPM) * NoteDuration(m.NoteLength) * 2)
+	m.breve = time.Minute / NoteDuration(m.BPM) * NoteDuration(m.NoteLength) * 2
 	m.semibreve = m.breve / 2
 	m.minim = m.semibreve / 2
 	m.crotchet = m.semibreve / 4
