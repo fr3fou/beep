@@ -35,7 +35,7 @@ type EasedADSR struct {
 	ratios            ADSRRatios
 	attackMultiplier  float64
 	decayMultiplier   float64
-	releaseMultiplier float64
+	sustainMultiplier float64
 }
 
 // ADSRRatios is a struct for determining what duration should each state in an ADSR take.

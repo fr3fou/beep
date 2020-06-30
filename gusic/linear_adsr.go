@@ -5,12 +5,12 @@ func identity(t float64) float64 {
 }
 
 // NewLinearADSR is a constructor for an ADSR
-func NewLinearADSR(ratios ADSRRatios, attackMultiplier, decayMultiplier, releaseMultiplier float64) ADSR {
+func NewLinearADSR(ratios ADSRRatios, attackMultiplier, decayMultiplier float64) ADSR {
 	return &EasedADSR{
 		easing:            identity,
 		ratios:            ratios,
 		attackMultiplier:  attackMultiplier,
 		decayMultiplier:   decayMultiplier,
-		releaseMultiplier: releaseMultiplier,
+		sustainMultiplier: attackMultiplier - decayMultiplier,
 	}
 }
