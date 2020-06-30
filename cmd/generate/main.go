@@ -35,7 +35,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.E(5, m.Quaver(), volume),
@@ -51,7 +51,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.CS(6, m.Quaver(), volume),
@@ -67,7 +67,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.E(5, m.Quaver(), volume),
@@ -83,7 +83,7 @@ func Memory() gusic.Melody {
 		gusic.GS(5, m.Semiquaver()*3, volume),
 		gusic.A(5, m.Quaver(), volume),
 		//
-		gusic.Pause(m.Quaver()),
+		gusic.Rest(m.Quaver()),
 		gusic.E(5, m.Quaver(), volume),
 		gusic.A(5, m.Quaver(), volume),
 		gusic.CS(6, m.Quaver(), volume),
