@@ -13,14 +13,17 @@ func Memory() gusic.Melody {
 	sampleRate := 48000.0
 	bpm := 90
 	noteLength := 4 // 4/4, therefore 4
-	volume := 0.05
+	volume := 0.15
 
 	m := gusic.NewMelody(
 		sampleRate,
 		bpm,
 		noteLength,
 		math.Sin,
-		gusic.NewLinearADSR(gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
+		gusic.NewEasedADSR(func(x float64) float64 {
+			x--
+			return x*x*x + 1
+		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
 	)
 
 	m.AddNotes(

@@ -5,6 +5,9 @@ import "time"
 // Generator is a function for producing samples
 type Generator = func(x float64) float64
 
+// Easer is an easing function meant to be used in conjuction with an EasedADSR
+type Easer = func(t float64) float64
+
 // NoteDuration is the duration of a single note
 type NoteDuration = time.Duration
 
@@ -26,8 +29,18 @@ type Melody struct {
 	demisemiquaver NoteDuration
 }
 
-// LinearADSR is an Envelope implementation
+// LinearADSR is a linear Envelope implementation
 type LinearADSR struct {
+	ratios            ADSRRatios
+	attackMultiplier  float64
+	decayMultiplier   float64
+	releaseMultiplier float64
+	currentMultiplier float64
+}
+
+// EasedADSR is an eased Envelope implementation
+type EasedADSR struct {
+	easing            Easer
 	ratios            ADSRRatios
 	attackMultiplier  float64
 	decayMultiplier   float64
