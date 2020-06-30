@@ -44,7 +44,7 @@ ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
 
 [viktordanov](https://github.com/viktordanov)
 
-## Resources Used
+## References
 
 - <https://pages.mtu.edu/~suits/NoteFreqCalcs.html>
 - <https://medium.com/@MicroPyramid/understanding-audio-quality-bit-rate-sample-rate-14286953d71f>
