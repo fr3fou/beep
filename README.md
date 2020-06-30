@@ -34,7 +34,7 @@ go music.
 - [x] Rename to a proper name (?)
 - [x] Make examples
 - [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
-- [ ] Implement a simple format - ~~ mp3 ~~ / wav
+- [ ] Implement a simple format - ~~mp3~~ / wav
 - [x] Define all notes in all octaves a seperate file
 - [ ] GUI + keybinds
 - [ ] Play multiple notes at once
