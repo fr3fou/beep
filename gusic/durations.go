@@ -44,7 +44,7 @@ func (m *Melody) Quarter() NoteDuration {
 	return m.crotchet
 }
 
-func (m *Melody) Eigth() NoteDuration {
+func (m *Melody) Eighth() NoteDuration {
 	return m.quaver
 }
 

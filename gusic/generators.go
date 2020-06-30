@@ -3,27 +3,33 @@ package gusic
 import "math"
 
 // Square is a square generator function
-func Square(x float64) float64 {
-	val := math.Sin(x)
+func Square(period float64) Generator {
+	return func(x float64) float64 {
+		val := math.Sin(period * x)
 
-	switch {
-	case val == 0:
-		return 0
-	case val < 0:
-		return -1
-	case val > 0:
-		return 1
+		switch {
+		case val == 0:
+			return 0
+		case val < 0:
+			return -1
+		case val > 0:
+			return 1
+		default:
+			return 1
+		}
 	}
-
-	return 1
 }
 
 // Sawtooth is a sawtooth generator function
-func Sawtooth(x float64) float64 {
-	return x - math.Floor(x)
+func Sawtooth(period float64) Generator {
+	return func(x float64) float64 {
+		return x/period - math.Floor(x/period)
+	}
 }
 
 // Triangle is a triangle generator function
-func Triangle(x float64) float64 {
-	return 2 * math.Abs(x/1-math.Floor(x/1+0.5))
+func Triangle(period float64) Generator {
+	return func(x float64) float64 {
+		return 2 * math.Abs(x/period-math.Floor(x/period+0.5))
+	}
 }
