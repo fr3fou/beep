@@ -29,15 +29,6 @@ type Melody struct {
 	demisemiquaver NoteDuration
 }
 
-// LinearADSR is a linear Envelope implementation
-type LinearADSR struct {
-	ratios            ADSRRatios
-	attackMultiplier  float64
-	decayMultiplier   float64
-	releaseMultiplier float64
-	currentMultiplier float64
-}
-
 // EasedADSR is an eased Envelope implementation
 type EasedADSR struct {
 	easing            Easer
@@ -45,7 +36,6 @@ type EasedADSR struct {
 	attackMultiplier  float64
 	decayMultiplier   float64
 	releaseMultiplier float64
-	currentMultiplier float64
 }
 
 // ADSRRatios is a struct for determining what duration should each state in an ADSR take.
