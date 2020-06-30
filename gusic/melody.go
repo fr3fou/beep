@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"io"
 	"math"
+	"time"
 )
 
 // NewMelody is a constructor for a melody
@@ -24,12 +25,12 @@ func NewMelody(sampleRate float64, bpm int, noteLength int, generator Generator,
 }
 
 func (m *Melody) calculateDurations() {
-	// m.breve =
-	// m.semibreve =
-	// m.crotchet =
-	// m.quaver =
-	// m.semiquaver =
-	// m.demisemiquaver =
+	m.breve = NoteDuration(time.Minute / NoteDuration(m.BPM) * NoteDuration(m.NoteLength) * 2)
+	m.semibreve = m.breve / 2
+	m.crotchet = m.semibreve / 2
+	m.quaver = m.crotchet / 2
+	m.semiquaver = m.quaver / 2
+	m.demisemiquaver = m.semiquaver / 2
 }
 
 // AddNote adds a note
