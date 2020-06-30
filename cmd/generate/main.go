@@ -13,7 +13,7 @@ func Memory() gusic.Melody {
 	sampleRate := 48000.0
 	bpm := 90
 	noteLength := 4 // 4/4, therefore 4
-	volume := 0.15
+	volume := 0.5
 
 	m := gusic.NewMelody(
 		sampleRate,
@@ -23,7 +23,7 @@ func Memory() gusic.Melody {
 		gusic.NewEasedADSR(func(x float64) float64 {
 			x--
 			return x*x*x + 1
-		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35, 1.0),
+		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
 	)
 
 	m.AddNotes(
@@ -106,6 +106,7 @@ func main() {
 	defer file.Close()
 
 	m := Memory()
+
 	m.Write(file)
 
 	// pcm := m.PCM()       // returns the PCM array
