@@ -48,10 +48,10 @@ type ADSRRatios struct {
 
 // ADSR defines what an Envelope should behave like
 type ADSR interface {
-	Attack(notes []float64)
-	Decay(notes []float64)
-	Sustain(notes []float64)
-	Release(notes []float64)
+	Attack(samples []float64)
+	Decay(samples []float64)
+	Sustain(samples []float64)
+	Release(samples []float64)
 	GetRatios() ADSRRatios
 }
 
