@@ -27,10 +27,11 @@ func NewMelody(sampleRate float64, bpm int, noteLength int, generator Generator,
 func (m *Melody) calculateDurations() {
 	m.breve = NoteDuration(time.Minute / NoteDuration(m.BPM) * NoteDuration(m.NoteLength) * 2)
 	m.semibreve = m.breve / 2
-	m.crotchet = m.semibreve / 2
-	m.quaver = m.crotchet / 2
-	m.semiquaver = m.quaver / 2
-	m.demisemiquaver = m.semiquaver / 2
+	m.minim = m.semibreve / 2
+	m.crotchet = m.semibreve / 4
+	m.quaver = m.semibreve / 8
+	m.semiquaver = m.semibreve / 16
+	m.demisemiquaver = m.semibreve / 32
 }
 
 // AddNote adds a note
@@ -56,7 +57,7 @@ func (m *Melody) compute() []float64 {
 	for _, note := range m.Notes {
 		samples := []float64{}
 
-		for j := 1.0; j < m.SampleRate*note.Duration.Seconds(); j++ {
+		for j := 1.0; j <= m.SampleRate*note.Duration.Seconds(); j++ {
 			val := m.Generator(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
 			samples = append(samples, val)
 		}

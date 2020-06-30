@@ -8,12 +8,16 @@ func (m *Melody) Semibreve() NoteDuration {
 	return m.semibreve
 }
 
+func (m *Melody) Minim() NoteDuration {
+	return m.minim
+}
+
 func (m *Melody) Crotchet() NoteDuration {
 	return m.crotchet
 }
 
 func (m *Melody) Quaver() NoteDuration {
-	return m.crotchet
+	return m.quaver
 }
 
 func (m *Melody) Semiquaver() NoteDuration {
@@ -33,7 +37,7 @@ func (m *Melody) Whole() NoteDuration {
 }
 
 func (m *Melody) Half() NoteDuration {
-	return m.crotchet
+	return m.minim
 }
 
 func (m *Melody) Quarter() NoteDuration {
@@ -41,6 +45,10 @@ func (m *Melody) Quarter() NoteDuration {
 }
 
 func (m *Melody) Eigth() NoteDuration {
+	return m.quaver
+}
+
+func (m *Melody) Sixteenth() NoteDuration {
 	return m.semiquaver
 }
 
