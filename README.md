@@ -24,6 +24,7 @@ go music.
   ```go
   m := mego.NewMelody(...)
   m.AddNotes(...)
+  
   // or
   m.Runs[0].AddNotes(...)
 
