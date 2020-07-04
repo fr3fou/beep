@@ -11,16 +11,19 @@ import (
 // Memory C# F# G#
 func Memory() gusic.Melody {
 	sampleRate := 48000.0
-	bpm := 90
+	bpm := 80
 	noteLength := 4 // 4/4, therefore 4
-	volume := 0.015
+	volume := 0.125
 
 	m := gusic.NewMelody(
 		sampleRate,
 		bpm,
 		noteLength,
 		math.Sin,
-		gusic.NewEasedADSR(math.Sin, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
+		gusic.NewEasedADSR(func(t float64) float64 {
+			t--
+			return t*t*t + 1
+		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
 	)
 
 	m.AddNotes(
@@ -88,6 +91,44 @@ func Memory() gusic.Melody {
 		gusic.A(5, m.Semiquaver()*3, volume),
 		gusic.B(5, m.Quaver(), volume),
 	)
+
+	m.NewRun(
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Quaver(), volume*2/3),
+	)
+
 	return *m
 }
 
