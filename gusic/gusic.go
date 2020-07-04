@@ -11,9 +11,14 @@ type Easer = func(t float64) float64
 // NoteDuration is the duration of a single note
 type NoteDuration = time.Duration
 
+// Run represents a single run (stave) in sheet music, containing notes
+type Run struct {
+	Notes []Note
+}
+
 // Melody is a melody
 type Melody struct {
-	Notes      []Note
+	Runs       []Run
 	SampleRate float64
 	NoteLength int
 	BPM        int

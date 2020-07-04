@@ -11,15 +11,24 @@ go music.
 - [ ] Implement a simple format - ~~mp3~~ / wav
 - [x] Define all notes in all octaves a seperate file
 - [ ] GUI + keybinds
-- [ ] Play multiple notes at once
+- [ ] Play multiple notes at once (chords)
+  - [ ] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
+  ```go
+  type Note interface {
+    Compute(sampleRate float64) []float64
+  }
+
+  ```
   - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
-- [ ] Support for merging melodies (playing 2 melodies at the same time)
+- [x] Support for merging melodies (playing 2 melodies at the same time)
   ```go
   m := mego.NewMelody(...)
   m.AddNotes(...)
-  n := mego.NewMelody(...)
-  n.AddNotes(...)
-  o := m.Merge(n) // combines both melodies and makes a longer one
+  // or
+  m.Runs[0].AddNotes(...)
+
+  // more runs, i.e. staves 
+  m.NewRun(notes...)
   ```
 - [ ] Support for concatenating melodies / have melodies with differing BPM
   ```go
