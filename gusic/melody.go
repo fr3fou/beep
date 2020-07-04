@@ -16,7 +16,7 @@ func NewMelody(sampleRate float64, bpm int, noteLength int, generator Generator,
 		NoteLength: noteLength,
 		Envelope:   adsr,
 		Generator:  generator,
-		Notes:      []Note{},
+		Runs:       []Run{{}},
 	}
 
 	m.calculateDurations()
@@ -36,12 +36,17 @@ func (m *Melody) calculateDurations() {
 
 // AddNote adds a note
 func (m *Melody) AddNote(note Note) {
-	m.Notes = append(m.Notes, note)
+	m.Runs[0].AddNote(note)
 }
 
 // AddNotes adds notes
 func (m *Melody) AddNotes(notes ...Note) {
-	m.Notes = append(m.Notes, notes...)
+	m.Runs[0].AddNotes(notes...)
+}
+
+// NewRun creates and accepts notes for a new run
+func (m *Melody) NewRun(notes ...Note) {
+	m.Runs = append(m.Runs, Run{Notes: notes})
 }
 
 // ApplyADSR applies all the stages of an ADSR to an array of notes
@@ -61,21 +66,37 @@ func (m *Melody) applyADSR(noteSamples []float64) {
 }
 
 func (m *Melody) compute() []float64 {
-	melody := []float64{}
+	runSamples := [][]float64{}
 
-	for _, note := range m.Notes {
-		samples := []float64{}
+	longestSample := 0.0
+	for i, run := range m.Runs {
+		runSamples = append(runSamples, []float64{})
+		for _, note := range run.Notes {
+			samples := []float64{}
 
-		for j := 1.0; j <= m.SampleRate*note.Duration.Seconds(); j++ {
-			val := m.Generator(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
-			samples = append(samples, val)
+			for j := 1.0; j <= math.Ceil(m.SampleRate*note.Duration.Seconds()); j++ {
+				val := m.Generator(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
+				samples = append(samples, val)
+			}
+
+			m.applyADSR(samples)
+			runSamples[i] = append(runSamples[i], samples...)
 		}
-
-		m.applyADSR(samples)
-		melody = append(melody, samples...)
+		longestSample = math.Max(longestSample, float64(len(runSamples[i])))
 	}
 
-	return melody
+	// Combine raw wave data with basic addition
+	finalSamples := make([]float64, int64(longestSample))
+
+	for i := int64(0); i < int64(longestSample); i++ {
+		for _, sample := range runSamples {
+			if i < int64(len(sample)) {
+				finalSamples[i] += sample[i]
+			}
+		}
+	}
+
+	return finalSamples
 }
 
 func (m *Melody) PCM() ([]byte, error) {
