@@ -6,7 +6,6 @@ import "math"
 func Square(period float64) Generator {
 	return func(x float64) float64 {
 		val := math.Sin(period * x)
-
 		switch {
 		case val == 0:
 			return 0
