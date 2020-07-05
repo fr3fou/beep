@@ -39,7 +39,6 @@ func (a *EasedADSR) Sustain(samples []float64) {
 // Release is the release stage
 func (a *EasedADSR) Release(samples []float64) {
 	var t float64
-
 	for i := range samples {
 		t = float64(i) / float64(len(samples))
 		samples[i] *= a.sustainMultiplier - a.sustainMultiplier*a.easing(t)
