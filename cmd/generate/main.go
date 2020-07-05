@@ -91,7 +91,7 @@ func Memory() gusic.Melody {
 		gusic.B(5, m.Quaver(), volume),
 	)
 
-	m.NewRun(
+	m.AddRun(
 		//
 		gusic.Rest(m.Quaver()),
 		gusic.D(4, m.Crotchet(), volume*2/3),

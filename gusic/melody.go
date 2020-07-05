@@ -44,8 +44,8 @@ func (m *Melody) AddNotes(notes ...Note) {
 	m.Runs[0].AddNotes(notes...)
 }
 
-// NewRun creates and accepts notes for a new run
-func (m *Melody) NewRun(notes ...Note) {
+// AddRun creates and accepts notes for a new run
+func (m *Melody) AddRun(notes ...Note) {
 	m.Runs = append(m.Runs, Run{Notes: notes})
 }
 
