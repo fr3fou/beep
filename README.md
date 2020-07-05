@@ -11,9 +11,9 @@ go music.
 - [ ] Implement a simple format - ~~mp3~~ / wav
 - [x] Define all notes in all octaves a seperate file
 - [ ] GUI + keybinds
-- [ ] Play multiple notes at once (chords)
+- [x] Play multiple notes at once (chords)
   - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
-  - [ ] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
+  - [x] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
   ```go
   type Note interface {
       Samples(sampleRate float64) []float64
