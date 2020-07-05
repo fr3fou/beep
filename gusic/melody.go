@@ -65,7 +65,8 @@ func (m *Melody) applyADSR(noteSamples []float64) {
 	m.Envelope.Release(noteSamples[sustainEnd:])
 }
 
-func (m *Melody) compute() []float64 {
+// Samples computes and returns the samples
+func (m *Melody) Samples() []float64 {
 	runSamples := [][]float64{}
 
 	longestSample := 0.0
@@ -97,7 +98,7 @@ func (m *Melody) compute() []float64 {
 func (m *Melody) PCM() ([]byte, error) {
 	buf := &bytes.Buffer{}
 
-	if err := binary.Write(buf, binary.LittleEndian, m.compute()); err != nil {
+	if err := binary.Write(buf, binary.LittleEndian, m.Samples()); err != nil {
 		return nil, err
 	}
 
@@ -105,5 +106,5 @@ func (m *Melody) PCM() ([]byte, error) {
 }
 
 func (m *Melody) Write(w io.Writer) error {
-	return binary.Write(w, binary.LittleEndian, m.compute())
+	return binary.Write(w, binary.LittleEndian, m.Samples())
 }
