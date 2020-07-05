@@ -12,7 +12,7 @@ func NewNote(step int, duration NoteDuration, volume float64) SingleNote {
 }
 
 // Samples returns the samples
-func (note SingleNote) Samples(sampleRate float64, generator Generator) []float64 {
+func (note SingleNote) Samples(sampleRate float64, generator Generator, envelope ADSR) []float64 {
 	noteSamples := []float64{}
 
 	duration := math.Ceil(sampleRate * note.Duration.Seconds())
@@ -20,7 +20,7 @@ func (note SingleNote) Samples(sampleRate float64, generator Generator) []float6
 		val := generator(j*note.Frequency*2*math.Pi/sampleRate) * note.Volume
 		noteSamples = append(noteSamples, val)
 	}
-
+	ApplyADSR(noteSamples, envelope)
 	return noteSamples
 }
 

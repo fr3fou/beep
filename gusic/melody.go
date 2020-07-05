@@ -49,22 +49,6 @@ func (m *Melody) AddRun(notes ...Note) {
 	m.Runs = append(m.Runs, Run{Notes: notes})
 }
 
-// ApplyADSR applies all the stages of an ADSR to an array of notes
-func (m *Melody) applyADSR(noteSamples []float64) {
-	length := len(noteSamples)
-
-	ratios := m.Envelope.Ratios()
-
-	attackEnd := int(ratios.AttackRatio * float64(length))
-	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
-	sustainEnd := int(ratios.SustainRatio*float64(length)) + decayEnd
-
-	m.Envelope.Attack(noteSamples[:attackEnd])
-	m.Envelope.Decay(noteSamples[attackEnd:decayEnd])
-	m.Envelope.Sustain(noteSamples[decayEnd:sustainEnd])
-	m.Envelope.Release(noteSamples[sustainEnd:])
-}
-
 // Samples computes and returns the samples
 func (m *Melody) Samples() []float64 {
 	runSamples := [][]float64{}
@@ -73,8 +57,7 @@ func (m *Melody) Samples() []float64 {
 	for i, run := range m.Runs {
 		runSamples = append(runSamples, []float64{})
 		for _, note := range run.Notes {
-			samples := note.Samples(m.SampleRate, m.Generator)
-			m.applyADSR(samples)
+			samples := note.Samples(m.SampleRate, m.Generator, m.Envelope)
 			runSamples[i] = append(runSamples[i], samples...)
 		}
 		longestSample = math.Max(longestSample, float64(len(runSamples[i])))

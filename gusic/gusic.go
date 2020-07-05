@@ -75,5 +75,21 @@ type ADSR interface {
 
 // Note is an interface for returning samples
 type Note interface {
-	Samples(sampleRate float64, generator Generator) []float64
+	Samples(sampleRate float64, generator Generator, adsr ADSR) []float64
+}
+
+// ApplyADSR applies all the stages of an ADSR to an array of notes
+func ApplyADSR(noteSamples []float64, envelope ADSR) {
+	length := len(noteSamples)
+
+	ratios := envelope.Ratios()
+
+	attackEnd := int(ratios.AttackRatio * float64(length))
+	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
+	sustainEnd := int(ratios.SustainRatio*float64(length)) + decayEnd
+
+	envelope.Attack(noteSamples[:attackEnd])
+	envelope.Decay(noteSamples[attackEnd:decayEnd])
+	envelope.Sustain(noteSamples[decayEnd:sustainEnd])
+	envelope.Release(noteSamples[sustainEnd:])
 }
