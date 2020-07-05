@@ -2,19 +2,12 @@ package gusic
 
 import "math"
 
-// NewChord is a Chord constructor
-func NewChord(notes ...SingleNote) Chord {
-	return Chord{
-		Notes: notes,
-	}
-}
-
 // Samples returns the samples
 func (c Chord) Samples(sampleRate float64, generator Generator, envelope ADSR) []float64 {
 	chordSamples := [][]float64{}
 
 	longestNote := 0.0
-	for _, note := range c.Notes {
+	for _, note := range c {
 		samples := note.Samples(sampleRate, generator, envelope)
 		chordSamples = append(chordSamples, samples)
 		longestNote = math.Max(longestNote, float64(len(samples)))

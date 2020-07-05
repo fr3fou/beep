@@ -26,11 +26,15 @@ func Memory() gusic.Melody {
 	)
 
 	m.AddNotes(
-		gusic.NewChord(
+		gusic.Chord{
 			gusic.C(4, m.Crotchet(), volume),
+			gusic.D(4, m.Crotchet(), volume),
 			gusic.E(4, m.Crotchet(), volume),
+			gusic.F(4, m.Crotchet(), volume),
 			gusic.G(4, m.Crotchet(), volume),
-		),
+			gusic.A(4, m.Crotchet(), volume),
+			gusic.B(4, m.Crotchet(), volume),
+		},
 	)
 
 	//m.AddNotes(

@@ -60,9 +60,7 @@ type SingleNote struct {
 }
 
 // Chord is a group of notes that are to be played at the same time
-type Chord struct {
-	Notes []SingleNote
-}
+type Chord []SingleNote
 
 // ADSR defines what an Envelope should behave like
 type ADSR interface {
