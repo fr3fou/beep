@@ -20,7 +20,7 @@ func (c Chord) Samples(sampleRate float64, generator Generator) []float64 {
 		longestNote = math.Max(longestNote, float64(len(samples)))
 	}
 
-	finalSamples := []float64{}
+	finalSamples := make([]float64, int64(longestNote))
 	for i := int64(0); i < int64(longestNote); i++ {
 		for _, sample := range chordSamples {
 			if i < int64(len(sample)) {
