@@ -52,15 +52,6 @@ type ADSRRatios struct {
 	ReleaseRatio float64
 }
 
-// ADSR defines what an Envelope should behave like
-type ADSR interface {
-	Attack(samples []float64)
-	Decay(samples []float64)
-	Sustain(samples []float64)
-	Release(samples []float64)
-	Ratios() ADSRRatios
-}
-
 // SingleNote is a note
 type SingleNote struct {
 	Frequency float64
@@ -71,6 +62,15 @@ type SingleNote struct {
 // Chord is a group of notes that are to be played at the same time
 type Chord struct {
 	Notes []SingleNote
+}
+
+// ADSR defines what an Envelope should behave like
+type ADSR interface {
+	Attack(samples []float64)
+	Decay(samples []float64)
+	Sustain(samples []float64)
+	Release(samples []float64)
+	Ratios() ADSRRatios
 }
 
 // Note is an interface for returning samples

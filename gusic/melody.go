@@ -80,6 +80,7 @@ func (m *Melody) compute() []float64 {
 	}
 
 	// Combine raw wave data with basic addition
+	// Summing up goes column by column
 	finalSamples := make([]float64, int64(longestSample))
 	for i := int64(0); i < int64(longestSample); i++ {
 		for _, sample := range runSamples {

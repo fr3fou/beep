@@ -12,16 +12,16 @@ func NewNote(step int, duration NoteDuration, volume float64) SingleNote {
 }
 
 // Samples returns the samples
-func (note *SingleNote) Samples(sampleRate float64, generator Generator) []float64 {
-	samples := []float64{}
+func (note SingleNote) Samples(sampleRate float64, generator Generator) []float64 {
+	noteSamples := []float64{}
 
 	duration := math.Ceil(sampleRate * note.Duration.Seconds())
 	for j := 1.0; j <= duration; j++ {
 		val := generator(j*note.Frequency*2*math.Pi/sampleRate) * note.Volume
-		samples = append(samples, val)
+		noteSamples = append(noteSamples, val)
 	}
 
-	return samples
+	return noteSamples
 }
 
 // Rest is a handy wrapper around NewNote with the given duration and volume and frequency 0
