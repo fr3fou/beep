@@ -53,7 +53,7 @@ func (m *Melody) NewRun(notes ...Note) {
 func (m *Melody) applyADSR(noteSamples []float64) {
 	length := len(noteSamples)
 
-	ratios := m.Envelope.GetRatios()
+	ratios := m.Envelope.Ratios()
 
 	attackEnd := int(ratios.AttackRatio * float64(length))
 	decayEnd := int(ratios.DecayRatio*float64(length)) + attackEnd
@@ -72,13 +72,7 @@ func (m *Melody) compute() []float64 {
 	for i, run := range m.Runs {
 		runSamples = append(runSamples, []float64{})
 		for _, note := range run.Notes {
-			samples := []float64{}
-
-			for j := 1.0; j <= math.Ceil(m.SampleRate*note.Duration.Seconds()); j++ {
-				val := m.Generator(j*note.Frequency*2*math.Pi/m.SampleRate) * note.Volume
-				samples = append(samples, val)
-			}
-
+			samples := note.Samples(m.SampleRate, m.Generator)
 			m.applyADSR(samples)
 			runSamples[i] = append(runSamples[i], samples...)
 		}
@@ -87,7 +81,6 @@ func (m *Melody) compute() []float64 {
 
 	// Combine raw wave data with basic addition
 	finalSamples := make([]float64, int64(longestSample))
-
 	for i := int64(0); i < int64(longestSample); i++ {
 		for _, sample := range runSamples {
 			if i < int64(len(sample)) {

@@ -45,7 +45,7 @@ func (a *EasedADSR) Release(samples []float64) {
 	}
 }
 
-// GetRatios returns the ratios
-func (a *EasedADSR) GetRatios() ADSRRatios {
+// Ratios returns the ratios
+func (a *EasedADSR) Ratios() ADSRRatios {
 	return a.ratios
 }

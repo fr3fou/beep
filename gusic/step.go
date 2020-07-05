@@ -19,61 +19,61 @@ const (
 )
 
 // A is A
-func A(octave int, duration NoteDuration, volume float64) Note {
+func A(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+a, duration, volume)
 }
 
 // AS is A#
-func AS(octave int, duration NoteDuration, volume float64) Note {
+func AS(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+as, duration, volume)
 }
 
 // B is B
-func B(octave int, duration NoteDuration, volume float64) Note {
+func B(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+b, duration, volume)
 }
 
 // C is C
-func C(octave int, duration NoteDuration, volume float64) Note {
+func C(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+c, duration, volume)
 }
 
 // CS is C#
-func CS(octave int, duration NoteDuration, volume float64) Note {
+func CS(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+cs, duration, volume)
 }
 
 // D is D
-func D(octave int, duration NoteDuration, volume float64) Note {
+func D(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+d, duration, volume)
 }
 
 // DS is D#
-func DS(octave int, duration NoteDuration, volume float64) Note {
+func DS(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+ds, duration, volume)
 }
 
 // E is E
-func E(octave int, duration NoteDuration, volume float64) Note {
+func E(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+e, duration, volume)
 }
 
 // F is F
-func F(octave int, duration NoteDuration, volume float64) Note {
+func F(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+f, duration, volume)
 }
 
 // FS is F#
-func FS(octave int, duration NoteDuration, volume float64) Note {
+func FS(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+fs, duration, volume)
 }
 
 // G is G
-func G(octave int, duration NoteDuration, volume float64) Note {
+func G(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+g, duration, volume)
 }
 
 // GS is G#
-func GS(octave int, duration NoteDuration, volume float64) Note {
+func GS(octave int, duration NoteDuration, volume float64) SingleNote {
 	return NewNote((octave-4)*12+gs, duration, volume)
 }

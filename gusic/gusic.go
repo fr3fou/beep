@@ -58,12 +58,22 @@ type ADSR interface {
 	Decay(samples []float64)
 	Sustain(samples []float64)
 	Release(samples []float64)
-	GetRatios() ADSRRatios
+	Ratios() ADSRRatios
 }
 
-// Note is a note
-type Note struct {
+// SingleNote is a note
+type SingleNote struct {
 	Frequency float64
 	Duration  NoteDuration
 	Volume    float64
+}
+
+// Chord is a group of notes that are to be played at the same time
+type Chord struct {
+	Notes []SingleNote
+}
+
+// Note is an interface for returning samples
+type Note interface {
+	Samples(sampleRate float64, generator Generator) []float64
 }
