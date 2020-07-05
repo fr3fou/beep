@@ -21,8 +21,7 @@ func Memory() gusic.Melody {
 		noteLength,
 		math.Sin,
 		gusic.NewEasedADSR(func(t float64) float64 {
-			t--
-			return t*t*t + 1
+			return t * t
 		}, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
 	)
 
@@ -136,19 +135,18 @@ func main() {
 	if len(os.Args) == 1 {
 		log.Fatalf("gusic: File name argument required\nUsage: %s <filename>", os.Args[0])
 	}
+
 	FileName := os.Args[1]
 	file, err := os.Create(FileName)
 	if err != nil {
 		panic(err)
 	}
+
 	defer file.Close()
 
 	m := Memory()
 
-	m.Write(file)
-
-	// pcm := m.PCM()       // returns the PCM array
-	// err := m.Write(file) // write PCM to an io.Writer
-
-	// err := wav.Write(m, file) // write wav to an io.writer
+	if err := m.Write(file); err != nil {
+		panic(err)
+	}
 }

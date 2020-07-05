@@ -99,6 +99,7 @@ func (m *Melody) compute() []float64 {
 	return finalSamples
 }
 
+// PCM generates the PCM
 func (m *Melody) PCM() ([]byte, error) {
 	buf := &bytes.Buffer{}
 
