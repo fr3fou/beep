@@ -16,7 +16,7 @@ go music.
   - [x] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
   ```go
   type Note interface {
-      Samples(sampleRate float64) []float64
+      Samples(sampleRate float64, generator Generator, adsr ADSR) []float64
   }
 
   ```
