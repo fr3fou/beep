@@ -26,119 +26,107 @@ func Memory() gusic.Melody {
 	)
 
 	m.AddNotes(
-		gusic.Chord{
-			gusic.C(4, m.Crotchet(), volume),
-			gusic.D(4, m.Crotchet(), volume),
-			gusic.E(4, m.Crotchet(), volume),
-			gusic.F(4, m.Crotchet(), volume),
-			gusic.G(4, m.Crotchet(), volume),
-			gusic.A(4, m.Crotchet(), volume),
-			gusic.B(4, m.Crotchet(), volume),
-		},
+		gusic.D(5, m.Quaver(), volume),
+		gusic.B(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.D(5, m.Quaver(), volume),
+		gusic.B(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.CS(6, m.Quaver(), volume),
+		gusic.B(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.A(5, m.Semiquaver()*3, volume),
+		gusic.B(5, m.Quaver(), volume),
+		// repeat
+		gusic.D(5, m.Quaver(), volume),
+		gusic.B(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.D(5, m.Quaver(), volume),
+		gusic.B(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.GS(5, m.Semiquaver()*3, volume),
+		gusic.A(5, m.Quaver(), volume),
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.E(5, m.Quaver(), volume),
+		gusic.A(5, m.Quaver(), volume),
+		gusic.CS(6, m.Quaver(), volume),
+		gusic.B(5, m.Quaver()+m.Semiquaver(), volume),
+		gusic.A(5, m.Semiquaver()*3, volume),
+		gusic.B(5, m.Quaver(), volume),
 	)
 
-	//m.AddNotes(
-	//	gusic.D(5, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.Rest(m.Quaver()),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.D(5, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.Rest(m.Quaver()),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.CS(6, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.A(5, m.Semiquaver()*3, volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//	// repeat
-	//	gusic.D(5, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.Rest(m.Quaver()),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.D(5, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.GS(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.GS(5, m.Semiquaver()*3, volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	//
-	//	gusic.Rest(m.Quaver()),
-	//	gusic.E(5, m.Quaver(), volume),
-	//	gusic.A(5, m.Quaver(), volume),
-	//	gusic.CS(6, m.Quaver(), volume),
-	//	gusic.B(5, m.Quaver()+m.Semiquaver(), volume),
-	//	gusic.A(5, m.Semiquaver()*3, volume),
-	//	gusic.B(5, m.Quaver(), volume),
-	//)
-
-	//m.AddRun(
-	//	//
-	//	gusic.Rest(m.Quaver()),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3), //
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3), //
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3), //
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3),
-	//	gusic.D(4, m.Crotchet(), volume*2/3), //
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3), //
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3), //
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3),
-	//	gusic.C(4, m.Crotchet(), volume*2/3), //
-	//	gusic.FS(4, m.Crotchet(), volume*2/3),
-	//	gusic.FS(4, m.Crotchet(), volume*2/3),
-	//	gusic.FS(4, m.Crotchet(), volume*2/3),
-	//	gusic.FS(4, m.Quaver(), volume*2/3),
-	//)
+	m.AddRun(
+		//
+		gusic.Rest(m.Quaver()),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3),
+		gusic.D(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3),
+		gusic.C(4, m.Crotchet(), volume*2/3), //
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Crotchet(), volume*2/3),
+		gusic.FS(4, m.Quaver(), volume*2/3),
+	)
 
 	return *m
 }
