@@ -5,7 +5,7 @@ go music.
 ## TODO
 
 - [x] Refactor to idiomatic go code
-- [x] Rename to a proper name (?)
+- [x] Rename to a proper name
 - [x] Make examples
 - [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
 - [ ] Implement a simple format - ~~mp3~~ / wav
