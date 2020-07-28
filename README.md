@@ -10,7 +10,7 @@ go music.
 - [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
 - [ ] Implement a simple format - ~~mp3~~ / wav
 - [x] Define all notes in all octaves a seperate file
-- [ ] GUI + keybinds
+- [ ] ~~GUI + keybinds~~ will be a separate project
 - [x] Play multiple notes at once (chords)
   - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
   - [x] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
