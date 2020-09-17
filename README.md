@@ -43,6 +43,7 @@ go music.
 - [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
 - [x] Implement logarithmic / exp ADSR
 - [x] Support for dotted notes
+- [ ] No-op "Measure" and "Section" functions
 
 
 ## How to play music
