@@ -42,6 +42,7 @@ go music.
 - [ ] Dual Channel support (left and right ear)
 - [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
 - [x] Implement logarithmic / exp ADSR
+- [x] Support for dotted notes
 
 
 ## How to play music
