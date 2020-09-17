@@ -1,5 +1,10 @@
 package gusic
 
+// Dotted makes a note dotted.
+func (m *Melody) Dotted(n NoteDuration) NoteDuration {
+	return n + 1/2*n
+}
+
 // Breve is a breve
 func (m *Melody) Breve() NoteDuration {
 	return m.breve
