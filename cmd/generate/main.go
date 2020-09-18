@@ -131,6 +131,61 @@ func Memory() gusic.Melody {
 	return *m
 }
 
+func BlindingLights() gusic.Melody {
+	sampleRate := 48000.0
+	bpm := 171
+	noteLength := 4 // 4/4, therefore 4
+	volume := 0.125
+
+	m := gusic.NewMelody(
+		sampleRate,
+		bpm,
+		noteLength,
+		math.Sin,
+		gusic.NewEasedADSR(math.Sin, gusic.NewRatios(0.25, 0.25, 0.25, 0.25), 1.35, 0.35),
+	)
+
+	m.AddNotes(
+		gusic.F(5, m.Half(), volume),
+		gusic.F(5, m.Dotted(m.Quarter()), volume),
+		gusic.DS(5, m.Eighth(), volume),
+		//
+		gusic.F(5, m.Eighth(), volume),
+		gusic.G(5, m.Quarter(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.DS(5, m.Dotted(m.Quarter()), volume),
+		//
+		gusic.F(5, m.Half(), volume),
+		gusic.F(5, m.Dotted(m.Quarter()), volume),
+		gusic.DS(5, m.Eighth(), volume),
+		//
+		gusic.F(5, m.Eighth(), volume),
+		gusic.G(5, m.Quarter(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.DS(5, m.Dotted(m.Quarter()), volume),
+		//
+		gusic.B(5, m.Eighth(), volume),
+		gusic.G(5, m.Quarter(), volume),
+		gusic.F(5, m.Quarter(), volume),
+		gusic.F(5, m.Quarter(), volume),
+		gusic.DS(5, m.Eighth(), volume),
+		gusic.F(5, m.Eighth(), volume),
+		//
+		gusic.F(5, m.Whole(), volume),
+		gusic.F(5, m.Half(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.B(5, m.Eighth(), volume),
+		gusic.C(5, m.Eighth(), volume),
+		gusic.B(5, m.Eighth(), volume),
+		//
+		//
+	)
+
+	return *m
+}
+
 func main() {
 	if len(os.Args) == 1 {
 		log.Fatalf("gusic: File name argument required\nUsage: %s <filename>", os.Args[0])
@@ -144,7 +199,7 @@ func main() {
 
 	defer file.Close()
 
-	m := Memory()
+	m := BlindingLights()
 
 	if err := m.Write(file); err != nil {
 		panic(err)
