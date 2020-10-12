@@ -6,20 +6,20 @@
   "commit": false,
   "contributors": [
     {
-      "login": "viktordanov",
-      "name": "Viktor Danov",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/7188510?v=4",
-      "profile": "https://viktordanov.me",
+      "login": "fr3fou",
+      "name": "Simo Aleksandrov",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1344906?v=4",
+      "profile": "https://simo.sh",
       "contributions": [
         "code",
         "infra"
       ]
     },
     {
-      "login": "fr3fou",
-      "name": "Simo Aleksandrov",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/1344906?v=4",
-      "profile": "https://simo.sh",
+      "login": "viktordanov",
+      "name": "Viktor Danov",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7188510?v=4",
+      "profile": "https://viktordanov.me",
       "contributions": [
         "code",
         "infra"
