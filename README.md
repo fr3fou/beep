@@ -51,10 +51,6 @@ go music.
 ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
 ```
 
-## Shoutouts
-
-[viktordanov](https://github.com/viktordanov)
-
 ## References
 
 - <https://pages.mtu.edu/~suits/NoteFreqCalcs.html>
