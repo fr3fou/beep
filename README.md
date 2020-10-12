@@ -1,6 +1,6 @@
 # gusic
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 go music.
@@ -84,6 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://viktordanov.me"><img src="https://avatars1.githubusercontent.com/u/7188510?v=4" width="100px;" alt=""/><br /><sub><b>Viktor Danov</b></sub></a><br /><a href="https://github.com/fr3fou/gusic/commits?author=viktordanov" title="Code">💻</a> <a href="#infra-viktordanov" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://simo.sh"><img src="https://avatars1.githubusercontent.com/u/1344906?v=4" width="100px;" alt=""/><br /><sub><b>Simo Aleksandrov</b></sub></a><br /><a href="https://github.com/fr3fou/gusic/commits?author=fr3fou" title="Code">💻</a> <a href="#infra-fr3fou" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
