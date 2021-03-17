@@ -199,7 +199,7 @@ func main() {
 
 	defer file.Close()
 
-	m := BlindingLights()
+	m := Memory()
 
 	if err := m.Write(file); err != nil {
 		panic(err)

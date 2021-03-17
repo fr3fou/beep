@@ -44,6 +44,9 @@ type EasedADSR struct {
 	sustainMultiplier float64
 }
 
+// IdentityADSR is a no-op Envelope implementation
+type IdentityADSR struct {}
+
 // ADSRRatios is a struct for determining what duration should each state in an ADSR take.
 type ADSRRatios struct {
 	AttackRatio  float64
