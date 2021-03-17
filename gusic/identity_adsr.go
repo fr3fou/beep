@@ -19,5 +19,5 @@ func (a *IdentityADSR) Release(samples []float64) {}
 
 // Ratios returns the ratios
 func (a *IdentityADSR) Ratios() ADSRRatios {
-	return a.ratios
+	return ADSRRatios{}
 }
