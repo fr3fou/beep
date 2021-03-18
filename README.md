@@ -46,7 +46,7 @@ Synthesizing raw PCM music using Go from scratch.
 - [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
 - [x] Implement logarithmic / exp ADSR
 - [x] Support for dotted notes
-
+- [ ] Overtones
 
 ## How to play music
 
