@@ -45,7 +45,7 @@ type EasedADSR struct {
 }
 
 // IdentityADSR is a no-op Envelope implementation
-type IdentityADSR struct {}
+type IdentityADSR struct{}
 
 // ADSRRatios is a struct for determining what duration should each state in an ADSR take.
 type ADSRRatios struct {
