@@ -25,22 +25,22 @@ Synthesizing raw PCM music using Go from scratch.
   ```
 - [x] Support for merging melodies (playing 2 melodies at the same time)
   ```go
-  m := mego.NewMelody(...)
-  m.AddNotes(...)
+  g := gusic.NewMelody(...)
+  g.AddNotes(...)
   
   // or
-  m.Runs[0].AddNotes(...)
+  g.Runs[0].AddNotes(...)
 
   // more runs, i.e. staves 
-  m.NewRun(notes...)
+  g.NewRun(notes...)
   ```
 - [ ] Support for concatenating melodies / have melodies with differing BPM
   ```go
-  m := mego.NewMelody(...)
-  m.AddNotes(...)
-  n := mego.NewMelody(...)
+  g := gusic.NewMelody(...)
+  g.AddNotes(...)
+  n := gusic.NewMelody(...)
   n.AddNotes(...)
-  o := m.Concat(n) // combines both melodies and makes a longer one
+  o := g.Concat(n) // combines both melodies and makes a longer one
   ```
 - [ ] Dual Channel support (left and right ear)
 - [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
