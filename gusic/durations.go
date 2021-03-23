@@ -1,5 +1,10 @@
 package gusic
 
+const (
+	// NoDuration is a note which doesn't have a duration, to be used with (*SingleNote).SampleAt()
+	NoDuration NoteDuration = 0
+)
+
 // Dotted makes a note dotted.
 func (m *Melody) Dotted(n NoteDuration) NoteDuration {
 	return n + 1/2*n
