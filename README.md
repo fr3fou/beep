@@ -1,6 +1,9 @@
 # gusic
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Synthesizing raw PCM music using Go from scratch.
@@ -15,26 +18,32 @@ Synthesizing raw PCM music using Go from scratch.
 - [x] Define all notes in all octaves a seperate file
 - [ ] ~~GUI + keybinds~~ - Will be a separate project
 - [x] Play multiple notes at once (chords)
+
   - `f(x) + g(x)` where `f` and `g` produce different notes, should result in them playing at the same time
   - [x] Note -> SingleNote, add Chord (multiple notes). Both implement new Note interface
+
   ```go
   type Note interface {
       Samples(sampleRate float64, generator Generator, adsr ADSR) []float64
   }
 
   ```
+
 - [x] Support for merging melodies (playing 2 melodies at the same time)
+
   ```go
   g := gusic.NewMelody(...)
   g.AddNotes(...)
-  
+
   // or
   g.Runs[0].AddNotes(...)
 
-  // more runs, i.e. staves 
+  // more runs, i.e. staves
   g.NewRun(notes...)
   ```
+
 - [ ] Support for concatenating melodies / have melodies with differing BPM
+
   ```go
   g := gusic.NewMelody(...)
   g.AddNotes(...)
@@ -42,11 +51,13 @@ Synthesizing raw PCM music using Go from scratch.
   n.AddNotes(...)
   o := g.Concat(n) // combines both melodies and makes a longer one
   ```
+
 - [ ] Dual Channel support (left and right ear)
-- [x] ~~Fix clipping in release of linear ADSR~~  _(theoretically negligible)_
+- [x] ~~Fix clipping in release of linear ADSR~~ _(theoretically negligible)_
 - [x] Implement logarithmic / exp ADSR
 - [x] Support for dotted notes
 - [ ] Overtones
+- [ ] Fix periods for generators that aren't sin (?)
 
 ## How to play music
 
@@ -90,6 +101,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
