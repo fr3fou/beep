@@ -191,8 +191,8 @@ func main() {
 		log.Fatalf("gusic: File name argument required\nUsage: %s <filename>", os.Args[0])
 	}
 
-	FileName := os.Args[1]
-	file, err := os.Create(FileName)
+	fileName := os.Args[1]
+	file, err := os.Create(fileName)
 	if err != nil {
 		panic(err)
 	}
