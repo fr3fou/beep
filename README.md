@@ -84,6 +84,7 @@ ffplay megolovania.bin -autoexit -showmode 1 -f f64le -ar 48000
 - <http://web.mit.edu/6.111/www/f2004/projects/ghs_report.pdf>
 - <http://www.martin-finke.de/blog/articles/audio-plugins-011-envelopes/>
 - <https://www.geogebra.org/graphing/ehmusxyd>
+- <https://zipcpu.com/dsp/2017/12/09/nco.html>
 
 ## Contributors ✨
 
