@@ -1,6 +1,8 @@
 package gusic
 
-import "math"
+import (
+	"math"
+)
 
 // NewNote is a constructor for a Note
 func NewNote(step int, duration NoteDuration, volume float64) SingleNote {
@@ -17,11 +19,17 @@ func (note SingleNote) Samples(sampleRate float64, generator Generator, envelope
 
 	duration := math.Ceil(sampleRate * note.Duration.Seconds())
 	for j := 1.0; j <= duration; j++ {
-		val := generator(j*note.Frequency*2*math.Pi/sampleRate) * note.Volume
-		noteSamples = append(noteSamples, val)
+		t := 2 * math.Pi * j * (note.Frequency / sampleRate)
+		noteSamples = append(noteSamples, note.SampleAt(t, sampleRate, generator))
 	}
 	ApplyADSR(noteSamples, envelope)
 	return noteSamples
+}
+
+// SampleAt returns the sample at a given point of `t`
+// `t` is how far a wave is in its cycle (phase)
+func (note SingleNote) SampleAt(t float64, sampleRate float64, generator Generator) float64 {
+	return generator(t) * note.Volume
 }
 
 // Rest is a handy wrapper around NewNote with the given duration and volume and frequency 0
