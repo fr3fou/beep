@@ -1,4 +1,4 @@
-# gusic
+# go-raw-audio
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
@@ -11,7 +11,7 @@ Synthesizing raw PCM music using Go from scratch.
 ## TODO
 
 - [x] Refactor to idiomatic go code
-- [ ] Rename to a proper name
+- [x] Rename to a proper name
 - [x] Make examples
 - [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
 - [ ] Implement a simple format - ~~mp3~~ / wav
