@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 // NewEasedADSR is a constructor for an ADSR
 func NewEasedADSR(easer Easer, ratios ADSRRatios, attackMultiplier, decayMultiplier float64) ADSR {

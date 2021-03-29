@@ -1,4 +1,4 @@
-# go-raw-audio
+# beep
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
@@ -13,7 +13,7 @@ Synthesizing raw PCM music using Go from scratch.
 - [x] Refactor to idiomatic go code
 - [x] Rename to a proper name
 - [x] Make examples
-- [x] Make note durations methods on `gusic.Melody` (as they are dependant on the note length and BPM)
+- [x] Make note durations methods on `beep.Melody` (as they are dependant on the note length and BPM)
 - [ ] Implement a simple format - ~~mp3~~ / wav
 - [x] Define all notes in all octaves a seperate file
 - [ ] ~~GUI + keybinds~~ - Will be a separate project
@@ -32,7 +32,7 @@ Synthesizing raw PCM music using Go from scratch.
 - [x] Support for merging melodies (playing 2 melodies at the same time)
 
   ```go
-  g := gusic.NewMelody(...)
+  g := beep.NewMelody(...)
   g.AddNotes(...)
 
   // or
@@ -45,9 +45,9 @@ Synthesizing raw PCM music using Go from scratch.
 - [ ] Support for concatenating melodies / have melodies with differing BPM
 
   ```go
-  g := gusic.NewMelody(...)
+  g := beep.NewMelody(...)
   g.AddNotes(...)
-  n := gusic.NewMelody(...)
+  n := beep.NewMelody(...)
   n.AddNotes(...)
   o := g.Concat(n) // combines both melodies and makes a longer one
   ```
@@ -95,8 +95,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-   <td align="center"><a href="https://simo.sh"><img src="https://avatars1.githubusercontent.com/u/1344906?v=4" width="100px;" alt=""/><br /><sub><b>Simo Aleksandrov</b></sub></a><br /><a href="https://github.com/fr3fou/gusic/commits?author=fr3fou" title="Code">💻</a> <a href="#infra-fr3fou" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-   <td align="center"><a href="https://viktordanov.me"><img src="https://avatars1.githubusercontent.com/u/7188510?v=4" width="100px;" alt=""/><br /><sub><b>Viktor Danov</b></sub></a><br /><a href="https://github.com/fr3fou/gusic/commits?author=viktordanov" title="Code">💻</a> <a href="#infra-viktordanov" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+   <td align="center"><a href="https://simo.sh"><img src="https://avatars1.githubusercontent.com/u/1344906?v=4" width="100px;" alt=""/><br /><sub><b>Simo Aleksandrov</b></sub></a><br /><a href="https://github.com/fr3fou/beep/commits?author=fr3fou" title="Code">💻</a> <a href="#infra-fr3fou" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+   <td align="center"><a href="https://viktordanov.me"><img src="https://avatars1.githubusercontent.com/u/7188510?v=4" width="100px;" alt=""/><br /><sub><b>Viktor Danov</b></sub></a><br /><a href="https://github.com/fr3fou/beep/commits?author=viktordanov" title="Code">💻</a> <a href="#infra-viktordanov" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 

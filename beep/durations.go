@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 const (
 	// NoDuration is a note which doesn't have a duration, to be used with (*SingleNote).SampleAt()

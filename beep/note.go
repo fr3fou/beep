@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 import (
 	"math"

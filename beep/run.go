@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 // AddNote adds notes
 func (r *Run) AddNote(note Note) {

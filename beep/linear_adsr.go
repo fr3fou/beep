@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 func identity(t float64) float64 {
 	return t

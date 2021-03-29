@@ -1,3 +1,3 @@
-module github.com/fr3fou/go-raw-audio
+module github.com/fr3fou/beep
 
 go 1.14

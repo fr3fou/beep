@@ -1,4 +1,4 @@
-package gusic
+package beep
 
 // NewIdentityADSR is a constructor for a no-op ADSR
 func NewIdentityADSR() ADSR {
